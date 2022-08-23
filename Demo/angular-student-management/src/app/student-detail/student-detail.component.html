@@ -1,0 +1,12 @@
+<h1>student-detail works!</h1>
+<h3>ID: {{student.id}}</h3>
+<h3>Name: {{student.name}}</h3>
+<h3>Address: {{student.address}}</h3>
+<h3>Age: {{student.age}}</h3>
+<h3>Mark: {{student.mark}}</h3>
+<img [src]="student.avatar">
+<!-- Event Binding !-->
+Change Mark <input #element type="number" min="0" max="10" (change)="changeMark(element.value)">
+<!-- Two way binding !-->
+<!--Change Mark <input type="number" min="0" max="10" [(ngModel)]="student.mark">-->
+

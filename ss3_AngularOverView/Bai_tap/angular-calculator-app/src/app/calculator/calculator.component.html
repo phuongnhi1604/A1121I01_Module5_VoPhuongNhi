@@ -1,0 +1,24 @@
+<h1>Calculator</h1>
+<div class="ml-4">
+  <div class="form-group">
+    <label for="theFirstNumber">Số thứ nhất: </label>
+    <input type="text" class="form-control" id="theFirstNumber" placeholder="Nhập số thứ nhất" #element (change)="firstNumberChange(element.value)">
+  </div>
+  <div class="form-group">
+    <label for="theSecondNumber">Số thứ hai: </label>
+    <input type="text" class="form-control" id="theSecondNumber" placeholder="Nhập số thứ hai" #element1 (change)="secondNumberChange(element1.value)">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Phép tính: </label>
+    <select class="form-control" id="exampleFormControlSelect1" [value]="operator" #element2 (change)="operatorChange(element2.value)">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+  </div>
+  <button class="btn btn-primary" (click)="calculate()">Tính toán</button>
+  <div class="form-group">
+    <label style="font-style: oblique; font-size: larger; color: red">Result: {{result}}</label>
+  </div>
+</div>

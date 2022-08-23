@@ -1,0 +1,7 @@
+<h2>Color Picker</h2>
+<div>
+  <label>Chọn màu: </label>
+  <input type="color" [value]="background" #element (change)="colorChange(element.value)">
+</div>
+<label>Màu được chọn: </label>
+<div style="height: 200px; width: 300px" [style.background-color]="background"></div>
