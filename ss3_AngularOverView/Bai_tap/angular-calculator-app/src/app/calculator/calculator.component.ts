@@ -10,11 +10,13 @@ export class CalculatorComponent {
   secondNumber: number;
   operator: string;
   result: number;
-  firstNumberChange(target) {
-    this.firstNumber = target;
+  firstNumberChange(target: any) {
+    // tslint:disable-next-line:radix
+    this.firstNumber = parseInt(target);
   }
-  secondNumberChange(target) {
-    this.secondNumber = target;
+  secondNumberChange(target: any) {
+    // tslint:disable-next-line:radix
+    this.secondNumber = parseInt(target);
   }
   operatorChange(target) {
     this.operator = target;
