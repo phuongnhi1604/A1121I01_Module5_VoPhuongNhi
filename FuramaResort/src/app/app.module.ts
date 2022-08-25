@@ -7,6 +7,9 @@ import { FooterComponent } from './footer/footer.component';
 import { FacilitiesListComponent } from './facilities-list/facilities-list.component';
 import { FacilitiesEditComponent } from './facilities-edit/facilities-edit.component';
 import { FacilitiesCreateComponent } from './facilities-create/facilities-create.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomerEditComponent } from './customer-edit/customer-edit.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -15,11 +18,14 @@ import { FacilitiesCreateComponent } from './facilities-create/facilities-create
     FooterComponent,
     FacilitiesListComponent,
     FacilitiesEditComponent,
-    FacilitiesCreateComponent
+    FacilitiesCreateComponent,
+    CustomerListComponent,
+    CustomerEditComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+    imports: [
+        BrowserModule,
+        RouterModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
