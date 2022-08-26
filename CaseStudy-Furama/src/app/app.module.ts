@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -9,8 +10,9 @@ import { FacilitiesEditComponent } from './facilities-edit/facilities-edit.compo
 import { FacilitiesCreateComponent } from './facilities-create/facilities-create.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
-import {RouterModule} from "@angular/router";
-import { HomeComponent } from './home/home.component';
+import { CustomerCreateComponent } from './customer-create/customer-create.component';
+import { ContractCreateComponent } from './contract-create/contract-create.component';
+import { ContractListComponent } from './contract-list/contract-list.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { HomeComponent } from './home/home.component';
     FacilitiesCreateComponent,
     CustomerListComponent,
     CustomerEditComponent,
-    HomeComponent
+    CustomerCreateComponent,
+    ContractCreateComponent,
+    ContractListComponent,
   ],
-    imports: [
-        BrowserModule,
-        RouterModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
