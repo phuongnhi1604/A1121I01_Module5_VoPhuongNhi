@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {IStudent} from '../../model/IStudent';
 
 @Component({
@@ -7,7 +7,7 @@ import {IStudent} from '../../model/IStudent';
   styleUrls: ['./student-detail.component.css']
 })
 export class StudentDetailComponent implements OnInit {
-  student: IStudent = {
+  @Input() student: IStudent = {
     id: 1,
     name: 'Phương Nhi',
     address: 'Đà Nẵng',

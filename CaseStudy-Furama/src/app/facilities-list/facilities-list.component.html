@@ -1,69 +1,61 @@
-<div class="background-image intro-2">
-  <div class="full-bg-img">
-    <div class="mask rgba-black-strong flex-center">
-      <div class="container">
-        <div style="display: flex; justify-content: center;align-items: center">
-          <h1 style="color: white;">FACILITIES</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container-fluid d-flex justify-content-center">
-  <table border="0" id="tableFacitities">
-    <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-    </thead>
-    <tbody style="display: flex; flex-wrap: wrap">
-    <tr *ngFor="let facitity of facilities" style="margin-left: 20px">
-      <td>
-        <div class="card mt-5 ml-5" style="width: 18rem; height: 25rem">
-          <img class="card-img-top" style="height: 190px"
-               [src]="facitity.image"
-               alt="Card image cap">
-          <div class="card-body bg_card">
-            <h5 class="card-title">{{facitity.name}}</h5>
-            <p class="card-text"><img src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/20/000000/external-cost-basic-ui-elements-2.2-sbts2018-outline-color-sbts2018.png"/>
-              {{facitity.cost}}</p>
-            <p class="card-text font-weight-bold" style="font-style: oblique">
-              {{facitity.serviceType}}</p>
-            <a href="#" class="btn btn-outline-primary" style="background-color: #FFF4CF">Edit</a>
-            <button type="button" class="btn btn-outline-primary ml-4" style="background-color: #FFF4CF"
-                    data-toggle="modal" data-target="#exampleModal">
-              Delete
+<div class="container-fluid">
+  <div class="d-flex justify-content-center">
+    <table border="0" id="tableFacitities">
+      <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody style="display: flex; flex-wrap: wrap">
+      <tr *ngFor="let facility of facilities" style="margin-left: 20px">
+        <td>
+          <div class="card mt-5 ml-5" style="width: 18rem; height: 25rem">
+            <img class="card-img-top" style="height: 190px"
+                 [src]="facility.image"
+                 alt="Card image cap">
+            <div class="card-body bg_card">
+              <h5 class="card-title">{{facility.name}}</h5>
+              <p class="card-text"><img src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/20/000000/external-cost-basic-ui-elements-2.2-sbts2018-outline-color-sbts2018.png"/>
+                {{facility.cost}}</p>
+              <p class="card-text font-weight-bold" style="font-style: oblique">
+                {{facility.serviceType}}</p>
+              <a href="#" class="btn btn-outline-dark " style="background-color: #DAE5D0">Edit</a>
+              <button type="button" class="btn btn-outline-dark ml-4" style="background-color: #DAE5D0"
+                      data-toggle="modal" data-target="#exampleModal">
+                Delete
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
             </button>
           </div>
-        </div>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-       aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Do you want to delete this facility?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Delete</button>
+          <div class="modal-body">
+            Do you want to delete this facility?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Delete</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 

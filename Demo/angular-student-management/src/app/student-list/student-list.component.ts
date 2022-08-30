@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IStudent} from '../../model/IStudent';
 import {StudentDAO} from '../data/StudentDAO';
 
@@ -8,10 +8,14 @@ import {StudentDAO} from '../data/StudentDAO';
   styleUrls: ['./student-list.component.css']
 })
 export class StudentListComponent implements OnInit {
-  students: IStudent[] = StudentDAO.getAllStudent();
   constructor() { }
+  students: IStudent[] = StudentDAO.getAllStudent();
+  temp: IStudent = {};
 
   ngOnInit(): void {
   }
 
+  submit(student: IStudent) {
+    this.students.push(student);
+  }
 }
