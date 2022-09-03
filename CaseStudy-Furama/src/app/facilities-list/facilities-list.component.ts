@@ -8,6 +8,7 @@ import {FacilityDAO} from '../../data/FacilityDAO';
   styleUrls: ['./facilities-list.component.css']
 })
 export class FacilitiesListComponent implements OnInit {
+  p = 1;
   facilities: IFacility[] = FacilityDAO.getAllFacilities();
   constructor() { }
 

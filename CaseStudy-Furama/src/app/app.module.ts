@@ -13,6 +13,7 @@ import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 import { CustomerCreateComponent } from './customer-create/customer-create.component';
 import { ContractCreateComponent } from './contract-create/contract-create.component';
 import { ContractListComponent } from './contract-list/contract-list.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ContractListComponent } from './contract-list/contract-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

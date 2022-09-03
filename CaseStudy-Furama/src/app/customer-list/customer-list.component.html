@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="content">
     <div class="mr-3 ml-3 mt-3">
-      <table id="tableCustomer" class="table table-hover table-fixed">
+      <table id="tableCustomer" class="table table-hover">
         <thead style="background-color: #FFB200">
         <tr>
           <th>ID</th>
           <th>Code</th>
           <th>Type</th>
-          <th>Name</th>
+          <th width="13%">Name</th>
           <th>Birthday</th>
           <th>Gender</th>
           <th>Id_card</th>
@@ -21,7 +21,7 @@
         <!--Table head-->
         <!--Table body-->
         <tbody style="background-color: #8CC0DE">
-        <tr *ngFor="let customer of customers">
+        <tr *ngFor="let customer of customers | paginate: {itemsPerPage: 2, currentPage: p}">
           <th scope="row">{{customer.id}}</th>
           <td>{{customer.code}}</td>
           <td>{{customer.type}}</td>
@@ -48,7 +48,9 @@
         </tbody>
       </table>
     </div>
-
+    <div class="wide grid pagination__container">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -73,3 +75,4 @@
     </div>
   </div>
 </div>
+

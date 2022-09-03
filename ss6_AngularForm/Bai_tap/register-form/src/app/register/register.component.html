@@ -1,0 +1,99 @@
+<h2>Form Đăng Ký</h2>
+<form style="width: 500px" [formGroup]="signInForm" (ngSubmit)="createAccount()">
+  <!-- Email !-->
+  <div class="form-group">
+    <label for="inputEmail">Email address</label>
+    <input type="email" class="form-control" id="inputEmail" placeholder="Enter email"
+           formControlName="email">
+    <div *ngIf="!signInForm.get('email')?.valid && (signInForm.get('email')?.touched||signInForm.get('email')?.dirty)">
+      <div [hidden]="!signInForm.get('email').errors.required">
+        <small class="form-text" style="color: red; font-style: italic" >
+          Bạn chưa nhập email.</small>
+      </div>
+      <div [hidden]="!signInForm.get('email').errors.pattern">
+        <small class="form-text" style="color: red; font-style: italic" >
+          Bạn nhập email chưa đúng định dạng.</small>
+      </div>
+    </div>
+  </div>
+  <!-- Password!-->
+  <div formGroupName = "pass" >
+    <div class="form-group">
+      <label for="inputPassword">Password</label>
+      <input type="password" class="form-control" id="inputPassword" placeholder="Password" formControlName="password">
+      <div *ngIf="!signInForm.get('pass').get('password')?.valid && (signInForm.get('pass').get('password')?.touched || signInForm.get('pass').get('password')?.dirty)">
+        <div [hidden]="!signInForm.get('pass').get('password').errors.required">
+          <small class="form-text" style="color: red; font-style: italic" >
+            Bạn chưa nhập mật khẩu.</small>
+        </div>
+        <div [hidden]="signInForm.get('pass').get('password').errors.minLength">
+          <small class="form-text" style="color: red; font-style: italic" >Mật khẩu phải có ít nhất 6 ký tự.</small>
+        </div>
+      </div>
+    </div>
+    <!-- Confirm Pass !-->
+    <div class="form-group" formControlName = "pass">
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" formControlName="confirmPassword">
+    </div>
+    <div>
+      <small class="form-text" style="color: red; font-style: italic" *ngIf="signInForm.hasError('passwordNotMatch', ['pass'])">Nhâp lại mật khẩu không trùng khớp.</small>
+    </div>
+  </div>
+  <!-- Country !-->
+  <div class="form-group">
+    <label for="inputCountry">Country</label>
+    <select formControlName="country" id="inputCountry" class="form-control">
+      <option value="{{country}}" *ngFor="let country of countryList">{{country}}</option>
+    </select>
+    <div *ngIf="!signInForm.get('country')?.valid && (signInForm.get('country')?.touched || signInForm.get('country')?.dirty)">
+      <small class="form-text" style="color: red; font-style: italic">Bạn chưa chọn quốc gia.</small>
+    </div>
+  </div>
+  <!-- Age !-->
+  <div class="form-group">
+    <label for="inputAge">Age</label>
+    <input type="text" class="form-control" id="inputAge" placeholder="Enter age"
+           formControlName="age">
+    <div *ngIf="!signInForm.get('age')?.valid && (signInForm.get('age')?.touched || signInForm.get('age')?.dirty)">
+      <div [hidden]="!signInForm.get('age').errors.required">
+        <small class="form-text" style="color: red; font-style: italic" >
+          Bạn chưa nhập tuổi.</small>
+      </div>
+      <div [hidden]="!signInForm.get('age').errors.min">
+        <small class="form-text" style="color: red; font-style: italic" >
+          Tuổi phải trên 18.</small>
+      </div>
+    </div>
+  </div>
+  <!-- Gender !-->
+  <div class="form-group">
+   <div>
+     <span>Gender </span>
+     <input type="radio" name="gender" formControlName="gender" value="male">Nam
+     <input type="radio" name="gender" formControlName="gender" value="female">Nữ
+   </div>
+    <div *ngIf="!signInForm.get('gender')?.valid && (signInForm.get('gender')?.touched || signInForm.get('gender')?.dirty)">
+      <div [hidden]="!signInForm.get('gender').errors.required">
+        <small class="form-text" style="color: red; font-style: italic" >Bạn chưa chọn giới tính.</small>
+      </div>
+    </div>
+  </div>
+  <!-- Phone !-->
+  <div class="form-group">
+    <label for="inputPhone">Phone</label>
+    <input type="text" class="form-control" id="inputPhone" placeholder="Enter phone"
+           formControlName="phone">
+    <div *ngIf="!signInForm.get('phone')?.valid && (signInForm.get('phone')?.touched || signInForm.get('phone')?.dirty)">
+      <div [hidden]="!signInForm.get('phone').errors.required">
+        <small class="form-text" style="color: red; font-style: italic" >
+          Bạn chưa nhập số điện thoại.</small>
+      </div >
+      <div [hidden]="!signInForm.get('phone').errors.pattern">
+        <small class="form-text" style="color: red; font-style: italic" >
+          Nhập số điện thoại sai định dạng.</small>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="signInForm.invalid">Save</button>
+</form>

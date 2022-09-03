@@ -612,3 +612,64 @@ header,
     margin-left: 91.66667%;
   }
 }
+
+/* Pagination */
+.ngx-pagination {
+  padding-left: 0px !important;
+}
+
+.ngx-pagination,
+.btn-info {
+  border: transparent !important;
+  border-radius: 4px !important;
+}
+
+.ngx-pagination a,
+.ngx-pagination button {
+  color: #0a0a0a;
+  display: block;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 4px !important;
+}
+
+.ngx-pagination a:hover,
+.ngx-pagination button {
+  color: #0a0a0a;
+  display: block;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 4px !important;
+  background-color: rgba(240, 248, 255, 0.589) !important;
+}
+
+.ngx-paginatio .show-for-sr:hover {
+  background: #fdfdfd !important;
+  border-radius: 4px !important;
+  border: transparent !important;
+}
+
+.ngx-pagination .current,
+.btn-info {
+  background: #4f3fff !important;
+  border: transparent !important;
+  border-radius: 4px !important;
+}
+
+.ngx-pagination .current:hover {
+  background: #4067d3 !important;
+  border-radius: 4px !important;
+  border: transparent !important;
+}
+
+.ngx-pagination .pagination-previous a::before,
+.ngx-pagination .pagination-previous.disabled::before {
+  content: '' !important;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.ngx-pagination .pagination-next a::after,
+.ngx-pagination .pagination-next.disabled::after {
+  content: '' !important;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
