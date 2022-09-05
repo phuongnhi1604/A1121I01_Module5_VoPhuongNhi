@@ -10,6 +10,7 @@ import {FacilityDAO} from '../../data/FacilityDAO';
 export class FacilitiesListComponent implements OnInit {
   p = 1;
   facilities: IFacility[] = FacilityDAO.getAllFacilities();
+  temp: IFacility = {};
   constructor() { }
 
   ngOnInit(): void {

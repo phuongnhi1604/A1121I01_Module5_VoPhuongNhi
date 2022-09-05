@@ -10,6 +10,7 @@ import {CustomerDAO} from '../../data/CustomerDAO';
 export class CustomerListComponent implements OnInit {
   customers: ICustomer[] = CustomerDAO.getAllCustomers();
   p = 1;
+  temp: ICustomer = {};
   constructor() { }
 
   ngOnInit(): void {

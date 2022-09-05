@@ -1,75 +1,69 @@
-<div class="container-fluid">
-  <div class="content">
-    <div class="form mt-4" style="background-color: #FFCB42; height: 550px">
-      <div class="container">
-        <div class="row mt-5 mb-1 justify-content-center">
-          <h3>Update facility</h3>
+<div class="grid wide services__container mt-4" style="background-color: white">
+  <div class="row justify-content-center">
+    <h2>Update facility</h2>
+  </div>
+  <div>
+    <form style=" width: 1000px; margin-left: 100px">
+      <input type="text" value="{{facility.id}}" hidden>
+      <div class="row d-flex">
+        <div class="col-6">
+          <div class="form-group">
+            <label>Service Name</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{facility.name}}">
+          </div>
+          <div class="form-group">
+            <label>Area</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{facility.area}}">
+          </div>
+          <div class="form-group">
+            <label>Cost</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{facility.cost}}">
+          </div>
+          <div class="form-group">
+            <label>Max People</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{facility.maxPeople}}">
+          </div>
+          <div class="form-group">
+            <label>Rent Type</label>
+            <select class="custom-select" style="background-color: #FEFBE7">
+              <option *ngFor="let rentType of rentTypes">{{rentType}}</option>
+              <option selected>{{facility.rentType}}</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <form method="post">
-            <input type="text" hidden>
-            <div class="row d-flex">
-              <div class="col-6">
-                <div class="form-group">
-                  <label>Service Name</label>
-                  <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label>Area</label>
-                  <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label>Cost</label>
-                  <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label>Max People</label>
-                  <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label>Rent Type</label>
-                  <select class="custom-select">
-                    <option value="" selected>Choose Rent Type</option>
-                    <option>Năm</option>
-                    <option>Tháng</option>
-                    <option>Ngày</option>
-                    <option>Giờ</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-group">
-                  <label>Service Type</label>
-                  <select class="custom-select">
-                    <option value="" selected>Choose Service Type</option>
-                    <option>Villa</option>
-                    <option>House</option>
-                    <option>Room</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Standard Room</label>
-                  <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label>Description Other</label>
-                  <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label>Pool Area</label>
-                  <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label>Number of Floors</label>
-                  <input type="text" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-outline-primary w-50" style="background-color: #FFF4CF">Save
-                </button>
-              </div>
-            </div>
-          </form>
+        <div class="col-6">
+          <div class="form-group">
+            <label>Service Type</label>
+            <select class="custom-select" style="background-color: #FEFBE7">
+              <option *ngFor="let typeService of typeServices">{{typeService}}</option>
+              <option selected>{{facility.serviceType}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Standard Room</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{facility.standardRoom}}">
+          </div>
+          <div class="form-group">
+            <label>Description Other</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{facility.description}}">
+          </div>
+          <div class="form-group">
+            <label>Pool Area</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{facility.poolArea}}">
+          </div>
+          <div class="form-group">
+            <label>Number of Floors</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{facility.numberOfFloor}}">
+          </div>
         </div>
       </div>
-    </div>
+      <div class="wide grid button__container">
+        <button type="submit" class="btn btn-outline-dark mb-4" style="background-color: #DAE5D0">Save
+        </button>
+        <button type="submit" class="btn btn-outline-dark ml-4 mb-4" style="background-color: #DAE5D0">Reset
+        </button>
+      </div>
+    </form>
   </div>
 </div>
+

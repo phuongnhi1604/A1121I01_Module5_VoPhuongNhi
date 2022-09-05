@@ -38,6 +38,90 @@ export class CustomerDAO {
       email: 'anhtuyetle@gmail.com',
       address: 'TP HCM'
     },
+    {
+      id: 4,
+      code: 'KH004',
+      type: 'Gold',
+      name: 'Le Tran Anh Tuyet',
+      birthday: '21/07/1992',
+      gender: false,
+      idCard: '458363926352',
+      phone: '0332528533',
+      email: 'anhtuyetle@gmail.com',
+      address: 'TP HCM'
+    },
+    {
+      id: 5,
+      code: 'KH005',
+      type: 'Gold',
+      name: 'Le Tran Anh Tuyet',
+      birthday: '21/07/1992',
+      gender: false,
+      idCard: '458363926352',
+      phone: '0332528533',
+      email: 'anhtuyetle@gmail.com',
+      address: 'TP HCM'
+    },
+    {
+      id: 6,
+      code: 'KH006',
+      type: 'Gold',
+      name: 'Le Tran Anh Tuyet',
+      birthday: '21/07/1992',
+      gender: false,
+      idCard: '458363926352',
+      phone: '0332528533',
+      email: 'anhtuyetle@gmail.com',
+      address: 'TP HCM'
+    },
+    {
+      id: 7,
+      code: 'KH007',
+      type: 'Gold',
+      name: 'Le Tran Anh Tuyet',
+      birthday: '21/07/1992',
+      gender: false,
+      idCard: '458363926352',
+      phone: '0332528533',
+      email: 'anhtuyetle@gmail.com',
+      address: 'TP HCM'
+    },
+    {
+      id: 8,
+      code: 'KH008',
+      type: 'Gold',
+      name: 'Le Tran Anh Tuyet',
+      birthday: '21/07/1992',
+      gender: false,
+      idCard: '458363926352',
+      phone: '0332528533',
+      email: 'anhtuyetle@gmail.com',
+      address: 'TP HCM'
+    },
+    {
+      id: 9,
+      code: 'KH009',
+      type: 'Gold',
+      name: 'Le Tran Anh Tuyet',
+      birthday: '21/07/1992',
+      gender: false,
+      idCard: '458363926352',
+      phone: '0332528533',
+      email: 'anhtuyetle@gmail.com',
+      address: 'TP HCM'
+    },
+    {
+      id: 10,
+      code: 'KH0010',
+      type: 'Gold',
+      name: 'Le Tran Anh Tuyet',
+      birthday: '21/07/1992',
+      gender: false,
+      idCard: '458363926352',
+      phone: '0332528533',
+      email: 'anhtuyetle@gmail.com',
+      address: 'TP HCM'
+    }
   ];
 
   static getAllCustomers() {

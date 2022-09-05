@@ -1,84 +1,79 @@
-<div class="container-fluid">
-  <div class="content">
-    <div class="form mt-4" style="background-color: #FFCB42; height: 630px">
-      <div class="container">
-        <div class="row mt-5 mb-1 justify-content-center">
-          <h3>Create new facility</h3>
+<div class="grid wide services__container mt-4" style="background-color: white">
+  <div class="row justify-content-center">
+    <h2>Facilities List</h2>
+    <a class="btn">Create new facility</a>
+  </div>
+  <div>
+    <form method="post" style="width: 1000px; margin-left: 100px">
+      <input type="text" hidden>
+      <div class="row d-flex">
+        <div class="col-6">
+          <div class="form-group">
+            <label>Service ID</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" placeholder="Enter ID">
+          </div>
+          <div class="form-group">
+            <label>Service Name</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" placeholder="Enter service name">
+          </div>
+          <div class="form-group">
+            <label>Area</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" placeholder="Enter service area">
+          </div>
+          <div class="form-group">
+            <label>Cost</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" placeholder="Enter cost">
+          </div>
+          <div class="form-group">
+            <label>Max People</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" placeholder="Enter max people">
+          </div>
+          <div class="form-group">
+            <label>Rent Type</label>
+            <select class="custom-select" style="background-color: #FEFBE7">
+              <option value="" selected>Choose Rent Type</option>
+              <option>Ngày</option>
+              <option>Tháng</option>
+              <option>Năm</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <form method="post">
-            <input type="text" hidden>
-            <div class="row d-flex">
-              <div class="col-6">
-                <div class="form-group">
-                  <label>Service ID</label>
-                  <input type="text" class="form-control" placeholder="Enter ID">
-                </div>
-                <div class="form-group">
-                  <label>Service Name</label>
-                  <input type="text" class="form-control" placeholder="Enter service name">
-                </div>
-                <div class="form-group">
-                  <label>Area</label>
-                  <input type="text" class="form-control" placeholder="Enter service area">
-                </div>
-                <div class="form-group">
-                  <label>Cost</label>
-                  <input type="text" class="form-control" placeholder="Enter cost">
-                </div>
-                <div class="form-group">
-                  <label>Max People</label>
-                  <input type="text" class="form-control" placeholder="Enter max people">
-                </div>
-                <div class="form-group">
-                  <label>Rent Type</label>
-                  <select class="custom-select">
-                    <option value="" selected>Choose Rent Type</option>
-                    <option>Ngày</option>
-                    <option>Tháng</option>
-                    <option>Năm</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-group">
-                  <label>Service Type</label>
-                  <select class="custom-select">
-                    <option value="" selected>Choose Service Type</option>
-                    <option>Villa</option>
-                    <option>House</option>
-                    <option>Room</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Standard Room</label>
-                  <input type="text" class="form-control" placeholder="Enter Standard Room">
-                </div>
-                <div class="form-group">
-                  <label>Description Other</label>
-                  <input type="text" class="form-control" placeholder="Enter description">
-                </div>
-                <div class="form-group">
-                  <label>Pool Area</label>
-                  <input type="text" class="form-control" placeholder="Enter Pool area">
-                </div>
-                <div class="form-group">
-                  <label>Number of Floors</label>
-                  <input type="text" class="form-control" placeholder="Enter Number of floors">
-                </div>
-                <div class="form-group">
-                  <label>Image</label>
-                  <input type="text" class="form-control" placeholder="Enter Image">
-                </div>
-              </div>
-              <div class="col-12" style="justify-content: center; display: flex">
-                <button type="submit" class="btn btn-outline-primary w-25" style="background-color: #FFF4CF">Save
-                </button>
-              </div>
-            </div>
-          </form>
+        <div class="col-6">
+          <div class="form-group">
+            <label>Service Type</label>
+            <select class="custom-select" style="background-color: #FEFBE7">
+              <option value="" selected>Choose Service Type</option>
+              <option>Villa</option>
+              <option>House</option>
+              <option>Room</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Standard Room</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" placeholder="Enter Standard Room">
+          </div>
+          <div class="form-group">
+            <label>Description Other</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" placeholder="Enter description">
+          </div>
+          <div class="form-group">
+            <label>Pool Area</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" placeholder="Enter Pool area">
+          </div>
+          <div class="form-group">
+            <label>Number of Floors</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" placeholder="Enter Number of floors">
+          </div>
+          <div class="form-group">
+            <label>Image</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" placeholder="Enter Image">
+          </div>
+        </div>
+        <div class="col-12" style="justify-content: center; display: flex">
+          <button type="submit" class="btn btn-outline-primary w-25" style="background-color: #FFF4CF">Save
+          </button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>

@@ -1,66 +1,36 @@
-<div class="container-fluid">
-  <div class="content">
-    <div class="mr-3 ml-3 mt-3">
-      <table id="tableContract" class="table table-hover table-fixed">
-        <thead style="background-color: #FFB200">
-        <tr>
-          <th>ID</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Deposit</th>
-          <th>Total Money</th>
-          <th>Employee ID</th>
-          <th>Customer ID</th>
-          <th>Service ID</th>
-        </tr>
-        </thead>
-        <!--Table head-->
-        <!--Table body-->
-        <tbody style="background-color: #FFF4CF">
-        <tr>
-          <th scope="row">001</th>
-          <td>17/08/2022</td>
-          <td>20/08/2022</td>
-          <td>500000</td>
-          <td>1500000</td>
-          <td>002</td>
-          <td>001</td>
-          <td>005</td>
-        </tr>
-        <tr>
-          <th scope="row">002</th>
-          <td>14/08/2022</td>
-          <td>20/08/2022</td>
-          <td>600000</td>
-          <td>3600000</td>
-          <td>004</td>
-          <td>002</td>
-          <td>002</td>
-        </tr>
-        <tr>
-          <th scope="row">003</th>
-          <td>10/08/2022</td>
-          <td>12/08/2022</td>
-          <td>200000</td>
-          <td>600000</td>
-          <td>003</td>
-          <td>004</td>
-          <td>006</td>
-        </tr>
-        <tr>
-          <th scope="row">004</th>
-          <td>11/08/2022</td>
-          <td>15/08/2022</td>
-          <td>400000</td>
-          <td>1600000</td>
-          <td>001</td>
-          <td>006</td>
-          <td>004</td>
-        </tr>
-        </tbody>
-      </table>
-      <!--Table-->
-
-    </div>
+<div class="grid wide services__container" style="background-color: white">
+  <div class="row justify-content-center">
+    <h2>Contract List</h2>
+  </div>
+  <div class="mr-3 ml-3 mt-3">
+    <table id="tableContract" class="table table-hover table-fixed">
+      <thead style="background-color: #FEFBE7">
+      <tr>
+        <th>ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Deposit</th>
+        <th>Customer ID</th>
+        <th>Service ID</th>
+      </tr>
+      </thead>
+      <!--Table head-->
+      <!--Table body-->
+      <tbody>
+      <tr *ngFor="let contract of contractList | paginate: {itemsPerPage: 1, currentPage: p}">
+        <th scope="row">{{contract.id}}</th>
+        <td>{{contract.startDay}}</td>
+        <td>{{contract.endDay}}</td>
+        <td>{{contract.deposit}}</td>
+        <td>{{contract.customer.code}}</td>
+        <td>{{contract.facility.id}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <!--Table-->
+  </div>
+  <div class="wide grid pagination__container">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>
+

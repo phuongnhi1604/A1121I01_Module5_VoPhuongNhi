@@ -5,9 +5,10 @@ export class FacilityDAO {
     {
       id: 1,
       name: 'Santorin HoiAn Villa',
+      area: 100,
       cost: 2000000,
       maxPeople: 4,
-      rentType: 'Ngày',
+      rentType: 'Tháng',
       serviceType: 'Villa',
       standardRoom: 'Vip',
       description: 'None',
@@ -19,6 +20,7 @@ export class FacilityDAO {
     {
       id: 2,
       name: 'The Nam An Villa Hoi An',
+      area: 100,
       cost: 3000000,
       maxPeople: 5,
       rentType: 'Ngày',
@@ -33,6 +35,7 @@ export class FacilityDAO {
     {
       id: 3,
       name: 'Villa Savanna Rơm Hội An',
+      area: 100,
       cost: 1000000,
       maxPeople: 2,
       rentType: 'Ngày',
@@ -47,6 +50,7 @@ export class FacilityDAO {
     {
       id: 4,
       name: 'M Villa Hoi An',
+      area: 100,
       cost: 4000000,
       maxPeople: 2,
       rentType: 'Ngày',
@@ -61,6 +65,7 @@ export class FacilityDAO {
     {
       id: 5,
       name: 'The Beach House',
+      area: 100,
       cost: 3000000,
       maxPeople: 2,
       rentType: 'Ngày',
@@ -75,6 +80,7 @@ export class FacilityDAO {
     {
       id: 6,
       name: 'Ancient House',
+      area: 100,
       cost: 1000000,
       maxPeople: 2,
       rentType: 'Ngày',
@@ -89,6 +95,7 @@ export class FacilityDAO {
     {
       id: 7,
       name: 'The Garden House',
+      area: 100,
       cost: 8000000,
       maxPeople: 5,
       rentType: 'Ngày',
@@ -103,9 +110,10 @@ export class FacilityDAO {
     {
       id: 8,
       name: 'The Memory-Danang',
+      area: 100,
       cost: 2000000,
       maxPeople: 3,
-      rentType: 'Ngày',
+      rentType: 'Giờ',
       serviceType: 'House',
       standardRoom: 'Vip',
       description: 'None',
@@ -117,6 +125,7 @@ export class FacilityDAO {
     {
       id: 9,
       name: 'Le House Boutique',
+      area: 100,
       cost: 2000000,
       maxPeople: 2,
       rentType: 'Ngày',
@@ -131,9 +140,10 @@ export class FacilityDAO {
     {
       id: 10,
       name: 'Raon Apartment and Hotel',
+      area: 100,
       cost: 700000,
       maxPeople: 3,
-      rentType: 'Ngày',
+      rentType: 'Năm',
       serviceType: 'Room',
       standardRoom: 'Vip',
       description: 'None',
@@ -145,6 +155,7 @@ export class FacilityDAO {
     {
       id: 11,
       name: 'Golden Rose Hotel',
+      area: 100,
       cost: 500000,
       maxPeople: 2,
       rentType: 'Giờ',
@@ -159,6 +170,7 @@ export class FacilityDAO {
     {
       id: 12,
       name: 'Rosabella Boutique Hotel',
+      area: 100,
       cost: 5000000,
       maxPeople: 4,
       rentType: 'Tháng',

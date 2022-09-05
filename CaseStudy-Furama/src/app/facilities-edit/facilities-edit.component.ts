@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {IFacility} from '../model/IFacility';
 
 @Component({
   selector: 'app-facilities-edit',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./facilities-edit.component.css']
 })
 export class FacilitiesEditComponent implements OnInit {
-
+  @Input() facility: IFacility = {};
+  rentTypes: Array<string> = ['Ngày', 'Tháng', 'Năm', 'Giờ'];
+  typeServices: Array<string> = ['Villa', 'House', 'Room'];
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
