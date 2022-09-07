@@ -1,0 +1,12 @@
+<h2>Dictionary Page</h2>
+<table border="1">
+  <tr>
+    <th>Word</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let dic of dict">
+    <td>{{dic.word}}</td>
+    <td><a [routerLink]="['/detail',dic.word]">Detail</a></td>
+  </tr>
+</table>
+
