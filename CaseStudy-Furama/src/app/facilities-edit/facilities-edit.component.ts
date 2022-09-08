@@ -24,18 +24,18 @@ export class FacilitiesEditComponent implements OnInit {
       this.id = parseInt(param.get('id'));
       const facility = this.facilityService.findByID(this.id);
       this.editForm = new FormGroup({
-        id: new FormControl(facility.id),
-        name: new FormControl(facility.name),
-        area: new FormControl(facility.area),
-        cost: new FormControl(facility.cost),
-        max_people: new FormControl(facility.maxPeople),
-        rent_type: new FormControl(facility.rentType),
-        service_type: new FormControl(facility.serviceType),
-        standard: new FormControl(facility.standardRoom),
-        description: new FormControl(facility.description),
-        pool_area: new FormControl(facility.poolArea),
-        floors: new FormControl(facility.numberOfFloor),
-        image: new FormControl(facility.image)
+        id: new FormControl(facility.id, [Validators.required, Validators.pattern('^\\d+$')]),
+        name: new FormControl(facility.name, [Validators.required, Validators.pattern('[a-zA-Z\\s]{1,100}')]),
+        area: new FormControl(facility.area, [Validators.required, Validators.pattern('^\\d+$')]),
+        cost: new FormControl(facility.cost, [Validators.required, Validators.pattern('^\\d+$')]),
+        max_people: new FormControl(facility.maxPeople, [Validators.required, Validators.pattern('^\\d+$')]),
+        rent_type: new FormControl(facility.rentType, [Validators.required]),
+        service_type: new FormControl(facility.serviceType, [Validators.required]),
+        standard: new FormControl(facility.standardRoom, [Validators.required]),
+        description: new FormControl(facility.description, [Validators.required]),
+        pool_area: new FormControl(facility.poolArea, [Validators.required, Validators.pattern('^\\d+$')]),
+        floors: new FormControl(facility.numberOfFloor, [Validators.required, Validators.pattern('^\\d+$')]),
+        image: new FormControl(facility.image, [Validators.required])
       });
     });
   }

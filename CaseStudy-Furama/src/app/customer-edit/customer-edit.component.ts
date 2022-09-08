@@ -22,16 +22,16 @@ export class CustomerEditComponent implements OnInit {
       this.id = parseInt(param.get('id'));
       const customer = this.customerService.findById(this.id);
       this.updateForm = new FormGroup({
-        id: new FormControl(customer.id),
-        code: new FormControl(customer.code),
-        type: new FormControl(customer.type),
-        name: new FormControl(customer.name),
-        birthday: new FormControl(customer.birthday),
-        gender: new FormControl(customer.gender),
-        id_card: new FormControl(customer.idCard),
-        phone: new FormControl(customer.phone),
-        email: new FormControl(customer.email),
-        address: new FormControl(customer.address)
+        id: new FormControl(customer.id, [Validators.required, Validators.pattern('^\\d+$')]),
+        code: new FormControl(customer.code, [Validators.required, Validators.pattern('^KH-[0-9]{4}$')]),
+        type: new FormControl(customer.type, [Validators.required]),
+        name: new FormControl(customer.name, [Validators.required]),
+        birthday: new FormControl(customer.birthday, [Validators.required]),
+        gender: new FormControl(customer.gender, [Validators.required]),
+        id_card: new FormControl(customer.idCard, [Validators.required, Validators.pattern('^[0-9]{10,12}$')]),
+        phone: new FormControl(customer.phone, [Validators.required, Validators.pattern('^(84|0)9([0|1])[0-9]{7}$')]),
+        email: new FormControl(customer.email, [Validators.required, Validators.pattern('(\\W|^)[\\w.+\\-]*@gmail\\.com(\\W|$)')]),
+        address: new FormControl(customer.address, [Validators.required])
       });
     });
   }

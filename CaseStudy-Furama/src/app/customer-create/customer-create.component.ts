@@ -25,7 +25,7 @@ export class CustomerCreateComponent implements OnInit {
       gender: new FormControl('', [Validators.required]),
       id_card: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10,12}$')]),
       phone: new FormControl('', [Validators.required, Validators.pattern('^(84|0)9([0|1])[0-9]{7}$')]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.pattern('(\\W|^)[\\w.+\\-]*@gmail\\.com(\\W|$)')]),
       address: new FormControl('', [Validators.required])
     });
   }

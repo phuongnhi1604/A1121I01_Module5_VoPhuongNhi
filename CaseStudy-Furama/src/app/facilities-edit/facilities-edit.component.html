@@ -9,28 +9,94 @@
           <div class="form-group">
             <label>Service ID</label>
             <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="id">
+            <div *ngIf="editForm.get('id')?.invalid && (editForm.get('id')?.dirty)">
+              <div [hidden]="!editForm.get('id').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập id.</small>
+              </div>
+              <div *ngIf="editForm.get('id')?.invalid && (editForm.get('id')?.touched||editForm.get('id')?.dirty)">
+                <div [hidden]="!editForm.get('id').errors.pattern">
+                  <small class="form-text" style="color: red; font-style: italic" >
+                    Nhập id phải là kiểu số.</small>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Service Name</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="name">
+            <div *ngIf="editForm.get('name')?.invalid && (editForm.get('name')?.touched||editForm.get('name')?.dirty)">
+              <div [hidden]="!editForm.get('name').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập tên dịch vụ.</small>
+              </div>
+            </div>
+            <div *ngIf="editForm.get('name')?.invalid && (editForm.get('name')?.touched||editForm.get('name')?.dirty)">
+              <div [hidden]="!editForm.get('name').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Tên dịch vụ không được chứa số.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Area</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="area">
+            <div *ngIf="editForm.get('area')?.invalid && (editForm.get('area')?.touched||editForm.get('area')?.dirty)">
+              <div [hidden]="!editForm.get('area').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập diện tích.</small>
+              </div>
+            </div>
+            <div *ngIf="editForm.get('area')?.invalid && (editForm.get('area')?.touched||editForm.get('area')?.dirty)">
+              <div [hidden]="!editForm.get('area').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập diện tích phải là kiểu số.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Cost</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="cost">
+            <div *ngIf="editForm.get('cost')?.invalid && (editForm.get('cost')?.touched||editForm.get('cost')?.dirty)">
+              <div [hidden]="!editForm.get('cost').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập giá tiền.</small>
+              </div>
+            </div>
+            <div *ngIf="editForm.get('cost')?.invalid && (editForm.get('cost')?.touched||editForm.get('cost')?.dirty)">
+              <div [hidden]="!editForm.get('cost').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập giá tiền phải là kiểu số.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Max People</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="max_people">
+            <div *ngIf="editForm.get('max_people')?.invalid && (editForm.get('max_people')?.touched||editForm.get('max_people')?.dirty)">
+              <div [hidden]="!editForm.get('max_people').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập số người.</small>
+              </div>
+            </div>
+            <div *ngIf="editForm.get('max_people')?.invalid && (editForm.get('max_people')?.touched||editForm.get('max_people')?.dirty)">
+              <div [hidden]="!editForm.get('max_people').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập số người phải là kiểu số.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Rent Type</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName = "rent_type">
               <option *ngFor="let rentType of rentTypes">{{rentType}}</option>
             </select>
+            <div *ngIf="editForm.get('rent_type')?.invalid && (editForm.get('rent_type')?.touched||editForm.get('rent_type')?.dirty)">
+              <div [hidden]="!editForm.get('rent_type').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn kiểu thuê.</small>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-6">
@@ -39,26 +105,74 @@
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="service_type">
               <option *ngFor="let typeService of typeServices">{{typeService}}</option>
             </select>
+            <div *ngIf="editForm.get('service_type')?.invalid && (editForm.get('service_type')?.touched||editForm.get('service_type')?.dirty)">
+              <div [hidden]="!editForm.get('service_type').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn kiểu dịch vụ.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Standard Room</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName = "standard">
+            <div *ngIf="editForm.get('standard')?.invalid && (editForm.get('standard')?.touched||editForm.get('standard')?.dirty)">
+              <div [hidden]="!editForm.get('standard').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập tiêu chuẩn phòng.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Description Other</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="description">
+            <div *ngIf="editForm.get('description')?.invalid && (editForm.get('description')?.touched||editForm.get('description')?.dirty)">
+              <div [hidden]="!editForm.get('description').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập miêu tả.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Pool Area</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="pool_area">
+            <div *ngIf="editForm.get('pool_area')?.invalid && (editForm.get('pool_area')?.touched||editForm.get('pool_area')?.dirty)">
+              <div [hidden]="!editForm.get('pool_area').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập diện tích hồ bơi.</small>
+              </div>
+            </div>
+            <div *ngIf="editForm.get('pool_area')?.invalid && (editForm.get('pool_area')?.touched||editForm.get('pool_area')?.dirty)">
+              <div [hidden]="!editForm.get('pool_area').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập diện tích hồ bơi phải là kiểu số.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Number of Floors</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName = "floors">
+            <div *ngIf="editForm.get('floors')?.invalid && (editForm.get('floors')?.touched||editForm.get('floors')?.dirty)">
+              <div [hidden]="!editForm.get('floors').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập số tầng.</small>
+              </div>
+            </div>
+            <div *ngIf="editForm.get('floors')?.invalid && (editForm.get('floors')?.touched||editForm.get('floors')?.dirty)">
+              <div [hidden]="!editForm.get('floors').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập diện tích số tầng phải là kiểu số.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Image</label>
             <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="image">
+            <div *ngIf="editForm.get('image')?.invalid && (editForm.get('floors')?.touched||editForm.get('image')?.dirty)">
+              <div [hidden]="!editForm.get('image').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập hình ảnh.</small>
+              </div>
+            </div>
           </div>
         </div>
       </div>

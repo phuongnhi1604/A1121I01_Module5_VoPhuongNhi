@@ -9,24 +9,63 @@
           <div class="form-group">
             <label>Customer ID</label>
             <input type="text" class="form-control" formControlName="id" style="background-color: #FEFBE7">
+            <div *ngIf="updateForm.get('id')?.invalid && (updateForm.get('id')?.touched||updateForm.get('id')?.dirty)">
+              <div [hidden]="!updateForm.get('id').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập id.</small>
+              </div>
+            </div>
+            <div *ngIf="updateForm.get('id')?.invalid && (updateForm.get('id')?.touched||updateForm.get('id')?.dirty)">
+              <div [hidden]="!updateForm.get('id').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập id phải là kiểu số.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Customer Code</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="code">
+            <div *ngIf="updateForm.get('code')?.invalid && (updateForm.get('code')?.touched||updateForm.get('code')?.dirty)">
+              <div [hidden]="!updateForm.get('code').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập mã khách.</small>
+              </div>
+            </div>
+            <div *ngIf="updateForm.get('code')?.invalid && (updateForm.get('code')?.touched||updateForm.get('code')?.dirty)">
+              <div [hidden]="!updateForm.get('code').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập mã khách theo định dạng KH-XXXX.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Customer Type</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="type">
               <option *ngFor="let customerType of customerTypes">{{customerType}}</option>
             </select>
+            <div *ngIf="updateForm.get('type')?.invalid && (updateForm.get('type')?.touched || updateForm.get('type')?.dirty)">
+              <small class="form-text" style="color: red; font-style: italic">Bạn chưa chọn loại khách.</small>
+            </div>
           </div>
           <div class="form-group">
             <label>Customer Name</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="name">
+            <div *ngIf="updateForm.get('name')?.invalid && (updateForm.get('name')?.touched||updateForm.get('name')?.dirty)">
+              <div [hidden]="!updateForm.get('name').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập tên.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Birthday</label>
             <input type="date" class="form-control" style="background-color: #FEFBE7" formControlName="birthday">
+            <div *ngIf="updateForm.get('birthday')?.invalid && (updateForm.get('birthday')?.touched||updateForm.get('birthday')?.dirty)">
+              <div [hidden]="!updateForm.get('birthday').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn ngày sinh.</small>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-6">
@@ -40,18 +79,60 @@
           <div class="form-group">
             <label>ID Card</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="id_card">
+            <div *ngIf="updateForm.get('id_card')?.invalid && (updateForm.get('id_card')?.touched||updateForm.get('id_card')?.dirty)">
+              <div [hidden]="!updateForm.get('id_card').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập CMND.</small>
+              </div>
+            </div>
+            <div *ngIf="updateForm.get('id_card')?.invalid && (updateForm.get('id_card')?.touched||updateForm.get('id_card')?.dirty)">
+              <div [hidden]="!updateForm.get('id_card').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập CMND chưa đúng định dạng.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Phone Number</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="phone">
+            <div *ngIf="updateForm.get('phone')?.invalid && (updateForm.get('phone')?.touched||updateForm.get('phone')?.dirty)">
+              <div [hidden]="!updateForm.get('phone').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập số điện thoại.</small>
+              </div>
+            </div>
+            <div *ngIf="updateForm.get('phone')?.invalid && (updateForm.get('phone')?.touched||updateForm.get('phone')?.dirty)">
+              <div [hidden]="!updateForm.get('phone').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập số điện thoại chưa đúng định dạng.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Email</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="email">
+            <div *ngIf="updateForm.get('email')?.invalid && (updateForm.get('email')?.touched||updateForm.get('email')?.dirty)">
+              <div [hidden]="!updateForm.get('email').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập email.</small>
+              </div>
+            </div>
+            <div *ngIf="updateForm.get('email')?.invalid && (updateForm.get('email')?.touched||updateForm.get('email')?.dirty)">
+              <div [hidden]="!updateForm.get('email').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập email chưa đúng định dạng.</small>
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label>Address</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="address">
+            <div *ngIf="updateForm.get('address')?.invalid && (updateForm.get('address')?.touched||updateForm.get('address')?.dirty)">
+              <div [hidden]="!updateForm.get('address').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập địa chỉ.</small>
+              </div>
+            </div>
           </div>
         </div>
       </div>
