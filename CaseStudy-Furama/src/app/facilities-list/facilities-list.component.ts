@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IFacility} from '../model/IFacility';
 import {FacilityDAO} from '../../data/FacilityDAO';
+import {FacilityServiceService} from '../service/facility-service.service';
 
 @Component({
   selector: 'app-facilities-list',
@@ -9,11 +10,11 @@ import {FacilityDAO} from '../../data/FacilityDAO';
 })
 export class FacilitiesListComponent implements OnInit {
   p = 1;
-  facilities: IFacility[] = FacilityDAO.getAllFacilities();
-  temp: IFacility = {};
-  constructor() { }
+  facilities: IFacility[] = [];
+  constructor(private facilityService: FacilityServiceService) { }
 
   ngOnInit(): void {
+    this.facilities = this.facilityService.getAllFacilities();
   }
 
 }

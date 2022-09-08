@@ -4,7 +4,7 @@ export interface ICustomer {
   type?: string;
   name?: string;
   birthday?: string;
-  gender?: boolean;
+  gender?: string;
   idCard?: string;
   phone?: string;
   email?: string;

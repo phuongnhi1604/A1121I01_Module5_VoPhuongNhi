@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IStudent} from '../../model/IStudent';
+import {StudentServiceService} from '../service/student-service.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-student-detail',
@@ -7,18 +9,16 @@ import {IStudent} from '../../model/IStudent';
   styleUrls: ['./student-detail.component.css']
 })
 export class StudentDetailComponent implements OnInit {
-  @Input() student: IStudent = {
-    id: 1,
-    name: 'Phương Nhi',
-    address: 'Đà Nẵng',
-    age: 21,
-    mark: 6,
-    // tslint:disable-next-line:max-line-length
-    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8v3UolyZlLPX6ONi-eQM4evITTOUINtHGfnAdooonCYVFv0MBAzvoL6jwpSJpyUe3Lmc&usqp=CAU'
-  };
-  constructor() { }
+  student: IStudent | undefined;
+  constructor(private studentService: StudentServiceService,
+              private activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRouter.paramMap.subscribe((param) => {
+      // tslint:disable-next-line:radix
+      const id = parseInt(param.get('id'));
+      this.student = this.studentService.findByID(id);
+    });
   }
   changeMark(target): void {
     this.student.mark = target;

@@ -1,19 +1,41 @@
-<label>ID</label>
-<input #id>
-<br>
-<label>Name</label>
-<input #name>
-<br>
-<label>Address</label>
-<input #address>
-<br>
-<label>Age</label>
-<input #age>
-<br>
-<label>Avatar</label>
-<input #avatar>
-<br>
-<label>Mark</label>
-<input #mark>
-<br>
-<button (click)="addStudent(id.value, name.value, address.value,age.value,avatar.value,mark.value)">Save</button>
+<h3>Create Form</h3>
+<div class="container-fluid">
+  <div class="col-6">
+    <form [formGroup]="studentForm" (ngSubmit)="createStudent()">
+      <div class="form-group">
+        <label>Id: </label>
+        <input class="form-control" formControlName="id">
+      </div>
+      <div class="alert alert-danger" role="alert"
+           *ngIf=" studentForm.get('id')?.invalid && studentForm.get('id')?.dirty">
+        Id is required
+      </div>
+      <div class="form-group">
+        <label>Name: </label>
+        <input class="form-control" formControlName="name">
+      </div>
+      <div class="alert alert-danger" role="alert"
+           *ngIf=" studentForm.get('name')?.invalid && studentForm.get('name')?.touched">
+        Name is required
+      </div>
+      <div class="form-group">
+        <label>Address: </label>
+        <input class="form-control" formControlName="address">
+      </div>
+      <div class="form-group">
+        <label>Age: </label>
+        <input class="form-control" formControlName="age">
+      </div>
+      <div class="form-group">
+        <label>Avatar: </label>
+        <input class="form-control" formControlName="avatar">
+      </div>
+      <div class="form-group">
+        <label>Mark: </label>
+        <input class="form-control" formControlName="mark">
+      </div>
+      <input class="btn btn-primary" type="submit" value="Create" [disabled]="!studentForm.valid">
+    </form>
+  </div>
+</div>
+

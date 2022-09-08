@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IStudent} from '../../model/IStudent';
 import {StudentDAO} from '../data/StudentDAO';
+import {StudentServiceService} from '../service/student-service.service';
 
 @Component({
   selector: 'app-student-list',
@@ -8,11 +9,12 @@ import {StudentDAO} from '../data/StudentDAO';
   styleUrls: ['./student-list.component.css']
 })
 export class StudentListComponent implements OnInit {
-  constructor() { }
-  students: IStudent[] = StudentDAO.getAllStudent();
+  constructor(private studentService: StudentServiceService) { }
+  students: IStudent[] = [];
   temp: IStudent = {};
 
   ngOnInit(): void {
+    this.students = this.studentService.getAllStudent();
   }
 
   submit(student: IStudent) {

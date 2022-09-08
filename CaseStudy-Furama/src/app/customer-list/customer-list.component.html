@@ -2,6 +2,9 @@
   <div class="row justify-content-center">
     <h2>Customer List</h2>
   </div>
+  <div>
+    <a [routerLink]="['/customerCreate']">Create new customer</a>
+  </div>
   <div class="mr-3 ml-3 mt-3">
     <table class="table table-hover">
       <thead style="background-color: #FEFBE7">
@@ -9,7 +12,7 @@
         <th>ID</th>
         <th>Code</th>
         <th>Type</th>
-        <th width="50%">Name</th>
+        <th width="40%">Name</th>
         <th>Birthday</th>
         <th>Gender</th>
         <th>Id_card</th>
@@ -29,16 +32,15 @@
         <td>{{customer.type}}</td>
         <td>{{customer.name}}</td>
         <td>{{customer.birthday}}</td>
-        <td *ngIf="customer.gender==true">Nam</td>
-        <td *ngIf="customer.gender==false">Nữ</td>
+        <td>{{customer.gender}}</td>
         <td>{{customer.idCard}}</td>
         <td>{{customer.phone}}</td>
         <td>{{customer.email}}</td>
         <td>{{customer.address}}</td>
         <td>
-          <button type="button" class="btn my-2 my-sm-0 btn-outline-dark"
-                  style="background-color: #DAE5D0; color: #15133C" (click)="temp = customer"> Edit
-          </button>
+          <a type="button" class="btn my-2 my-sm-0 btn-outline-dark"
+                  style="background-color: #DAE5D0; color: #15133C" [routerLink]="['/customerUpdate',customer.id]"> Edit
+          </a>
         </td>
         <td>
           <!-- Button trigger modal -->
@@ -77,9 +79,6 @@
       </div>
     </div>
   </div>
-</div>
-<div >
-  <app-customer-edit [customer] = temp></app-customer-edit>
 </div>
 
 

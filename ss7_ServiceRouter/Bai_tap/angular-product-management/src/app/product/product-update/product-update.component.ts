@@ -30,7 +30,6 @@ export class ProductUpdateComponent implements OnInit {
 
   private getProduct(id: number) {
     return this.productService.findById(id);
-    return this.productService.findById(id);
   }
 
   updateProduct(id: number) {

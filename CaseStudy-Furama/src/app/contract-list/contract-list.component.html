@@ -2,6 +2,9 @@
   <div class="row justify-content-center">
     <h2>Contract List</h2>
   </div>
+  <div>
+    <a [routerLink]="['/contractCreate']">Create new contract</a>
+  </div>
   <div class="mr-3 ml-3 mt-3">
     <table id="tableContract" class="table table-hover table-fixed">
       <thead style="background-color: #FEFBE7">
@@ -19,7 +22,7 @@
       <tbody>
       <tr *ngFor="let contract of contractList | paginate: {itemsPerPage: 1, currentPage: p}">
         <th scope="row">{{contract.id}}</th>
-        <td>{{contract.startDay}}</td>
+        <td>{{contract.startDay | date: 'dd/MM/yyyy'}}</td>
         <td>{{contract.endDay}}</td>
         <td>{{contract.deposit}}</td>
         <td>{{contract.customer.code}}</td>

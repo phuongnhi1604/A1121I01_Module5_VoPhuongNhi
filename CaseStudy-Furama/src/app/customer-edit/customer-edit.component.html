@@ -3,53 +3,55 @@
     <h2>Update customer</h2>
   </div>
   <div>
-    <form style=" width: 1000px; margin-left: 100px">
-      <input type="text" hidden value="{{customer.id}}">
+    <form style=" width: 1000px; margin-left: 100px" [formGroup]="updateForm" (ngSubmit)="updateCustomer(id)">
       <div class="row d-flex">
         <div class="col-6">
           <div class="form-group">
+            <label>Customer ID</label>
+            <input type="text" class="form-control" formControlName="id" style="background-color: #FEFBE7">
+          </div>
+          <div class="form-group">
             <label>Customer Code</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{customer.code}}">
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="code">
           </div>
           <div class="form-group">
             <label>Customer Type</label>
-            <select class="custom-select" style="background-color: #FEFBE7">
+            <select class="custom-select" style="background-color: #FEFBE7" formControlName="type">
               <option *ngFor="let customerType of customerTypes">{{customerType}}</option>
-              <option selected>{{customer.type}}</option>
             </select>
           </div>
           <div class="form-group">
             <label>Customer Name</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{customer.name}}">
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="name">
           </div>
           <div class="form-group">
             <label>Birthday</label>
-            <input type="date" class="form-control" style="background-color: #FEFBE7" value="{{customer.birthday}}">
-          </div>
-          <div class="form-group">
-            <label>Gender: </label>
-            <input type="radio" value="true">
-            <label class="form-check-label" style="font-weight: normal">Nam</label>
-            <input type="radio" value="false">
-            <label class="form-check-label" style="font-weight: normal">Nữ</label>
+            <input type="date" class="form-control" style="background-color: #FEFBE7" formControlName="birthday">
           </div>
         </div>
         <div class="col-6">
+          <div class="form-group d-flex" style="margin-top: 38px">
+            <label>Gender: </label>
+            <div class="form-check" *ngFor="let gender of genders">
+              <label>
+                <input type="radio" [value]="gender" formControlName="gender">{{gender}} </label>
+            </div>
+          </div>
           <div class="form-group">
             <label>ID Card</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{customer.idCard}}">
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="id_card">
           </div>
           <div class="form-group">
             <label>Phone Number</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{customer.phone}}">
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="phone">
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{customer.email}}">
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="email">
           </div>
           <div class="form-group">
             <label>Address</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" value="{{customer.address}}">
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="address">
           </div>
         </div>
       </div>

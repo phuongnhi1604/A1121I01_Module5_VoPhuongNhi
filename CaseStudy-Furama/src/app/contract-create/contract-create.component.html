@@ -1,74 +1,118 @@
-<div class="container-fluid">
-  <div class="content">
-    <div class="form mt-4" style="background-color: #FFCB42; height: 500px">
-      <div class="container">
-        <div class="row mt-5 mb-1 justify-content-center">
-          <h3>Create new contract</h3>
-        </div>
-        <div>
-          <form method="post">
-            <input type="text" hidden>
-            <div class="row d-flex">
-              <div class="col-6">
-                <div class="form-group">
-                  <label>Start Date</label>
-                  <input type="date" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label>End Date</label>
-                  <input type="date" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label>Deposit</label>
-                  <input type="text" class="form-control"
-                         placeholder="Enter deposit">
-                </div>
-                <div class="form-group">
-                  <label>Total money</label>
-                  <input type="text" class="form-control"
-                         placeholder="Enter total money">
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="form-group">
-                  <label>Employee</label>
-                  <select class="custom-select">
-                    <option value="" selected>Choose Employee ID</option>
-                    <option value="">001</option>
-                    <option value="">002</option>
-                    <option value="">003</option>
-                    <option value="">004</option>
-                    <option value="">005</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Customer</label>
-                  <select class="custom-select">
-                    <option value="" selected>Choose Customer Code</option>
-                    <option value="">001</option>
-                    <option value="">002</option>
-                    <option value="">003</option>
-                    <option value="">004</option>
-                    <option value="">005</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Service</label>
-                  <select class="custom-select">
-                    <option value="" selected>Choose Service ID</option>
-                    <option value="">001</option>
-                    <option value="">002</option>
-                    <option value="">003</option>
-                    <option value="">004</option>
-                    <option value="">005</option>
-                  </select>
-                </div>
-                <button type="submit" class="btn btn-outline-primary w-50" style="background-color: #FFF4CF; margin-top: 33px">Save</button>
+<div class="grid wide services__container mt-4" style="background-color: white">
+  <div class="row justify-content-center">
+    <h2>Create Contract</h2>
+  </div>
+  <div>
+    <form method="post" style="width: 1000px; margin-left: 100px" [formGroup]="formCreate" (ngSubmit)="createContract()">
+      <div class="row d-flex">
+        <div class="col-6">
+          <div class="form-group">
+            <label>Contract ID</label>
+            <input type="text" style="background-color: #FEFBE7" formControlName="id" class="form-control" placeholder="Enter ID">
+            <div *ngIf="formCreate.get('id')?.invalid && (formCreate.get('id')?.touched||formCreate.get('id')?.dirty)">
+              <div [hidden]="!formCreate.get('id').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập id.</small>
               </div>
             </div>
-          </form>
+            <div *ngIf="formCreate.get('id')?.invalid && (formCreate.get('id')?.touched||formCreate.get('id')?.dirty)">
+              <div [hidden]="!formCreate.get('id').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập id phải là kiểu số.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Start Date</label>
+            <input type="date" style="background-color: #FEFBE7" formControlName="start_day" class="form-control">
+            <div *ngIf="formCreate.get('start_day')?.invalid && (formCreate.get('start_day')?.touched||formCreate.get('start_day')?.dirty)">
+              <div [hidden]="!formCreate.get('start_day').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn ngày bắt đầu.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>End Date</label>
+            <input type="date" style="background-color: #FEFBE7" formControlName="end_day" class="form-control">
+            <div *ngIf="formCreate.get('end_day')?.invalid && (formCreate.get('end_day')?.touched||formCreate.get('end_day')?.dirty)">
+              <div [hidden]="!formCreate.get('end_day').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn ngày kết thúc.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Deposit</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control"
+                   placeholder="Enter deposit" formControlName="deposit">
+            <div *ngIf="formCreate.get('deposit')?.invalid && (formCreate.get('deposit')?.touched||formCreate.get('deposit')?.dirty)">
+              <div [hidden]="!formCreate.get('deposit').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập tiền cọc.</small>
+              </div>
+            </div>
+            <div *ngIf="formCreate.get('deposit')?.invalid && (formCreate.get('deposit')?.touched||formCreate.get('deposit')?.dirty)">
+              <div [hidden]="!formCreate.get('deposit').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập tiền cọc phải là kiểu số.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label>Total money</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control"
+                   placeholder="Enter total money" formControlName="total">
+            <div *ngIf="formCreate.get('total')?.invalid && (formCreate.get('total')?.touched||formCreate.get('total')?.dirty)">
+              <div [hidden]="!formCreate.get('total').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập tổng tiền.</small>
+              </div>
+            </div>
+            <div *ngIf="formCreate.get('total')?.invalid && (formCreate.get('total')?.touched||formCreate.get('total')?.dirty)">
+              <div [hidden]="!formCreate.get('total').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập tổng tiền phải là kiểu số.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Customer</label>
+            <select class="custom-select" style="background-color: #FEFBE7" formControlName="customer">
+              <option value="" selected>Choose Customer ID</option>
+              <option value="{{customer.code}}" *ngFor="let customer of customers">{{customer.code}}</option>
+            </select>
+            <div *ngIf="formCreate.get('customer')?.invalid && (formCreate.get('customer')?.touched||formCreate.get('customer')?.dirty)">
+              <div [hidden]="!formCreate.get('customer').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn khách hàng.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Service</label>
+            <select class="custom-select" style="background-color: #FEFBE7" formControlName="service">
+              <option value="" selected>Choose Service ID</option>
+              <option value="{{facility}}" *ngFor="let facility of facilities">{{facility.id}}</option>
+            </select>
+            <div *ngIf="formCreate.get('service')?.invalid && (formCreate.get('service')?.touched||formCreate.get('service')?.dirty)">
+              <div [hidden]="!formCreate.get('service').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn dịch vụ.</small>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="wide grid button__container">
+        <button type="submit" class="btn btn-outline-dark mb-4" style="background-color: #DAE5D0" [disabled]="!formCreate.valid">Save
+        </button>
+        <button type="submit" class="btn btn-outline-dark ml-4 mb-4" style="background-color: #DAE5D0">Cancel
+        </button>
+      </div>
+    </form>
   </div>
 </div>
+

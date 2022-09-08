@@ -1,5 +1,6 @@
 <div class="container-fluid">
   <h2>Student List</h2>
+  <a routerLink="create">Create</a>
   <table class="table table-hover table-striped">
     <thead class="thead-dark">
     <tr>
@@ -23,18 +24,10 @@
       <td *ngIf="student.mark <= 5" style="color: red">FAIL</td>
       <td>
         <button class="mx-2 btn btn-danger">Delete</button>
-        <button class="btn btn-info" (click)="temp = student">Detail</button>
+        <a class="btn btn-info" [routerLink]="['detail',student.id]">Detail</a>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
 
-<div class="container">
-  <div class="row">
-    <app-student-detail [student]="temp"></app-student-detail>
-  </div>
-  <div>
-    <app-student-create (submitCreate)="submit($event)"></app-student-create>
-  </div>
-</div>

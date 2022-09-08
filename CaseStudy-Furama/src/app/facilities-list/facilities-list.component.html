@@ -2,6 +2,9 @@
   <div class="row justify-content-center">
     <h2>Facilities List</h2>
   </div>
+  <div>
+    <a [routerLink]="['/facilitiesCreate']">Create new facility</a>
+  </div>
   <div class="row">
     <div *ngFor="let facility of facilities | paginate: {itemsPerPage: 9, currentPage: p}"
          class="col l-4 m-6 c-12 service__item">
@@ -16,7 +19,7 @@
             {{facility.cost}}</p>
           <p class="card-text font-weight-bold" style="font-style: oblique">
             {{facility.serviceType}}</p>
-          <button type="button" class="btn btn-outline-dark" style="background-color: #DAE5D0" (click)="temp = facility">Edit</button>
+          <a type="button" class="btn btn-outline-dark" style="background-color: #DAE5D0" [routerLink]="['/facilitiesUpdate',facility.id]">Edit</a>
           <button type="button" class="btn btn-outline-dark ml-4" style="background-color: #DAE5D0"
                   data-toggle="modal" data-target="#exampleModal">
             Delete
@@ -52,7 +55,5 @@
     </div>
   </div>
 </div>
-<div >
-  <app-facilities-edit [facility] = temp></app-facilities-edit>
-</div>
+
 
