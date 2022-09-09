@@ -8,4 +8,5 @@ export interface IContract {
   startDay?: string;
   endDay?: string;
   deposit?: number;
+  total?: number;
 }

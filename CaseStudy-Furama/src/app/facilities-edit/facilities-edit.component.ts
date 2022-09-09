@@ -28,13 +28,13 @@ export class FacilitiesEditComponent implements OnInit {
         name: new FormControl(facility.name, [Validators.required, Validators.pattern('[a-zA-Z\\s]{1,100}')]),
         area: new FormControl(facility.area, [Validators.required, Validators.pattern('^\\d+$')]),
         cost: new FormControl(facility.cost, [Validators.required, Validators.pattern('^\\d+$')]),
-        max_people: new FormControl(facility.maxPeople, [Validators.required, Validators.pattern('^\\d+$')]),
-        rent_type: new FormControl(facility.rentType, [Validators.required]),
-        service_type: new FormControl(facility.serviceType, [Validators.required]),
-        standard: new FormControl(facility.standardRoom, [Validators.required]),
+        maxPeople: new FormControl(facility.maxPeople, [Validators.required, Validators.pattern('^\\d+$')]),
+        rentType: new FormControl(facility.rentType, [Validators.required]),
+        serviceType: new FormControl(facility.serviceType, [Validators.required]),
+        standardRoom: new FormControl(facility.standardRoom, [Validators.required]),
         description: new FormControl(facility.description, [Validators.required]),
-        pool_area: new FormControl(facility.poolArea, [Validators.required, Validators.pattern('^\\d+$')]),
-        floors: new FormControl(facility.numberOfFloor, [Validators.required, Validators.pattern('^\\d+$')]),
+        poolArea: new FormControl(facility.poolArea, [Validators.required, Validators.pattern('^\\d+$')]),
+        numberOfFloor: new FormControl(facility.numberOfFloor, [Validators.required, Validators.pattern('^\\d+$')]),
         image: new FormControl(facility.image, [Validators.required])
       });
     });

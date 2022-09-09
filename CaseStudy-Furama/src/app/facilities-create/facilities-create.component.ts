@@ -20,13 +20,13 @@ export class FacilitiesCreateComponent implements OnInit {
       name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z\\s]{1,100}')]),
       area: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
       cost: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
-      max_people: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
-      rent_type: new FormControl('', [Validators.required]),
-      service_type: new FormControl('', [Validators.required]),
-      standard: new FormControl('', [Validators.required]),
+      maxPeople: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
+      rentType: new FormControl('', [Validators.required]),
+      serviceType: new FormControl('', [Validators.required]),
+      standardRoom: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
-      pool_area: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
-      floors: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
+      poolArea: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
+      numberOfFloor: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
       image: new FormControl('', [Validators.required])
     });
   }

@@ -79,15 +79,15 @@
           </div>
           <div class="form-group">
             <label>ID Card</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="id_card">
-            <div *ngIf="customerCreateForm.get('id_card')?.invalid && (customerCreateForm.get('id_card')?.touched||customerCreateForm.get('id_card')?.dirty)">
-              <div [hidden]="!customerCreateForm.get('id_card').errors.required">
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="idCard">
+            <div *ngIf="customerCreateForm.get('idCard')?.invalid && (customerCreateForm.get('idCard')?.touched||customerCreateForm.get('idCard')?.dirty)">
+              <div [hidden]="!customerCreateForm.get('idCard').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Bạn chưa nhập CMND.</small>
               </div>
             </div>
-            <div *ngIf="customerCreateForm.get('id_card')?.invalid && (customerCreateForm.get('id_card')?.touched||customerCreateForm.get('id_card')?.dirty)">
-              <div [hidden]="!customerCreateForm.get('id_card').errors.pattern">
+            <div *ngIf="customerCreateForm.get('idCard')?.invalid && (customerCreateForm.get('idCard')?.touched||customerCreateForm.get('idCard')?.dirty)">
+              <div [hidden]="!customerCreateForm.get('idCard').errors.pattern">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Nhập CMND chưa đúng định dạng.</small>
               </div>

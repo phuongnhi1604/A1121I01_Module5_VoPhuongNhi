@@ -72,15 +72,15 @@
           </div>
           <div class="form-group">
             <label>Max People</label>
-            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="max_people" placeholder="Enter max people">
-            <div *ngIf="formCreate.get('max_people')?.invalid && (formCreate.get('max_people')?.touched||formCreate.get('max_people')?.dirty)">
-              <div [hidden]="!formCreate.get('max_people').errors.required">
+            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="maxPeople" placeholder="Enter max people">
+            <div *ngIf="formCreate.get('maxPeople')?.invalid && (formCreate.get('maxPeople')?.touched||formCreate.get('maxPeople')?.dirty)">
+              <div [hidden]="!formCreate.get('maxPeople').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Bạn chưa nhập số người.</small>
               </div>
             </div>
-            <div *ngIf="formCreate.get('max_people')?.invalid && (formCreate.get('max_people')?.touched||formCreate.get('max_people')?.dirty)">
-              <div [hidden]="!formCreate.get('max_people').errors.pattern">
+            <div *ngIf="formCreate.get('maxPeople')?.invalid && (formCreate.get('maxPeople')?.touched||formCreate.get('maxPeople')?.dirty)">
+              <div [hidden]="!formCreate.get('maxPeople').errors.pattern">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Nhập số người phải là kiểu số.</small>
               </div>
@@ -88,12 +88,12 @@
           </div>
           <div class="form-group">
             <label>Rent Type</label>
-            <select class="custom-select" style="background-color: #FEFBE7" formControlName="rent_type">
+            <select class="custom-select" style="background-color: #FEFBE7" formControlName="rentType">
               <option value="">Choose Rent Type</option>
               <option value="{{rentType}}" *ngFor="let rentType of rentTypes">{{rentType}}</option>
             </select>
-            <div *ngIf="formCreate.get('rent_type')?.invalid && (formCreate.get('rent_type')?.touched||formCreate.get('rent_type')?.dirty)">
-              <div [hidden]="!formCreate.get('rent_type').errors.required">
+            <div *ngIf="formCreate.get('rentType')?.invalid && (formCreate.get('rentType')?.touched||formCreate.get('rentType')?.dirty)">
+              <div [hidden]="!formCreate.get('rentType').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Bạn chưa chọn kiểu thuê.</small>
               </div>
@@ -103,12 +103,12 @@
         <div class="col-6">
           <div class="form-group">
             <label>Service Type</label>
-            <select class="custom-select" style="background-color: #FEFBE7" formControlName="service_type">
+            <select class="custom-select" style="background-color: #FEFBE7" formControlName="serviceType">
               <option value="">Choose Service Type</option>
               <option value="{{svType}}" *ngFor="let svType of serviceTypes">{{svType}}</option>
             </select>
-            <div *ngIf="formCreate.get('service_type')?.invalid && (formCreate.get('service_type')?.touched||formCreate.get('service_type')?.dirty)">
-              <div [hidden]="!formCreate.get('service_type').errors.required">
+            <div *ngIf="formCreate.get('serviceType')?.invalid && (formCreate.get('serviceType')?.touched||formCreate.get('serviceType')?.dirty)">
+              <div [hidden]="!formCreate.get('serviceType').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Bạn chưa chọn kiểu dịch vụ.</small>
               </div>
@@ -116,9 +116,9 @@
           </div>
           <div class="form-group">
             <label>Standard Room</label>
-            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="standard" placeholder="Enter Standard Room">
-            <div *ngIf="formCreate.get('standard')?.invalid && (formCreate.get('standard')?.touched||formCreate.get('standard')?.dirty)">
-              <div [hidden]="!formCreate.get('standard').errors.required">
+            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="standardRoom" placeholder="Enter Standard Room">
+            <div *ngIf="formCreate.get('standardRoom')?.invalid && (formCreate.get('standardRoom')?.touched||formCreate.get('standardRoom')?.dirty)">
+              <div [hidden]="!formCreate.get('standardRoom').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Bạn chưa nhập tiêu chuẩn phòng.</small>
               </div>
@@ -136,15 +136,15 @@
           </div>
           <div class="form-group">
             <label>Pool Area</label>
-            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="pool_area" placeholder="Enter Pool area">
-            <div *ngIf="formCreate.get('pool_area')?.invalid && (formCreate.get('pool_area')?.touched||formCreate.get('pool_area')?.dirty)">
-              <div [hidden]="!formCreate.get('pool_area').errors.required">
+            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="poolArea" placeholder="Enter Pool area">
+            <div *ngIf="formCreate.get('poolArea')?.invalid && (formCreate.get('poolArea')?.touched||formCreate.get('poolArea')?.dirty)">
+              <div [hidden]="!formCreate.get('poolArea').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Bạn chưa nhập diện tích hồ bơi.</small>
               </div>
             </div>
-            <div *ngIf="formCreate.get('pool_area')?.invalid && (formCreate.get('pool_area')?.touched||formCreate.get('pool_area')?.dirty)">
-              <div [hidden]="!formCreate.get('pool_area').errors.pattern">
+            <div *ngIf="formCreate.get('poolArea')?.invalid && (formCreate.get('poolArea')?.touched||formCreate.get('poolArea')?.dirty)">
+              <div [hidden]="!formCreate.get('poolArea').errors.pattern">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Nhập diện tích hồ bơi phải là kiểu số.</small>
               </div>
@@ -152,15 +152,15 @@
           </div>
           <div class="form-group">
             <label>Number of Floors</label>
-            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="floors" placeholder="Enter Number of floors">
-            <div *ngIf="formCreate.get('floors')?.invalid && (formCreate.get('floors')?.touched||formCreate.get('floors')?.dirty)">
-              <div [hidden]="!formCreate.get('floors').errors.required">
+            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="numberOfFloor" placeholder="Enter Number of floors">
+            <div *ngIf="formCreate.get('numberOfFloor')?.invalid && (formCreate.get('numberOfFloor')?.touched||formCreate.get('numberOfFloor')?.dirty)">
+              <div [hidden]="!formCreate.get('numberOfFloor').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Bạn chưa nhập số tầng.</small>
               </div>
             </div>
-            <div *ngIf="formCreate.get('floors')?.invalid && (formCreate.get('floors')?.touched||formCreate.get('floors')?.dirty)">
-              <div [hidden]="!formCreate.get('floors').errors.pattern">
+            <div *ngIf="formCreate.get('numberOfFloor')?.invalid && (formCreate.get('numberOfFloor')?.touched||formCreate.get('numberOfFloor')?.dirty)">
+              <div [hidden]="!formCreate.get('numberOfFloor').errors.pattern">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Nhập diện tích số tầng phải là kiểu số.</small>
               </div>
@@ -169,7 +169,7 @@
           <div class="form-group">
             <label>Image</label>
             <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="image" placeholder="Enter Image">
-            <div *ngIf="formCreate.get('image')?.invalid && (formCreate.get('floors')?.touched||formCreate.get('image')?.dirty)">
+            <div *ngIf="formCreate.get('image')?.invalid && (formCreate.get('image')?.touched||formCreate.get('image')?.dirty)">
               <div [hidden]="!formCreate.get('image').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Bạn chưa nhập hình ảnh.</small>

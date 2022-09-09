@@ -13,7 +13,7 @@
              [src]="facility.image"
              alt="Card image cap">
         <div class="card-body bg_card">
-          <h5 class="card-title">{{facility.name}}</h5>
+          <h5 class="card-title">{{facility.name | titlecase}}</h5>
           <p class="card-text"><img
             src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/20/000000/external-cost-basic-ui-elements-2.2-sbts2018-outline-color-sbts2018.png"/>
             {{facility.cost}}</p>

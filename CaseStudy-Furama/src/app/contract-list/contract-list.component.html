@@ -23,7 +23,7 @@
       <tr *ngFor="let contract of contractList | paginate: {itemsPerPage: 1, currentPage: p}">
         <th scope="row">{{contract.id}}</th>
         <td>{{contract.startDay | date: 'dd/MM/yyyy'}}</td>
-        <td>{{contract.endDay}}</td>
+        <td>{{contract.endDay }}</td>
         <td>{{contract.deposit}}</td>
         <td>{{contract.customer.code}}</td>
         <td>{{contract.facility.id}}</td>

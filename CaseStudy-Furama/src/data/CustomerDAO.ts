@@ -9,7 +9,7 @@ export class CustomerDAO {
     name: 'Vo Phuong Nhi',
     birthday: '20/10/2001',
     gender: 'Nữ',
-    idCard: '382937283728',
+    idCard: '3829372837',
     phone: '0421352322',
     email: 'nhi@gmail.com',
     address: 'Da Nang'
@@ -21,7 +21,7 @@ export class CustomerDAO {
       name: 'Tran Van A',
       birthday: '12/02/1999',
       gender: 'Nam',
-      idCard: '387492352728',
+      idCard: '3874923527',
       phone: '0921532362',
       email: 'Aaa@gmail.com',
       address: 'Ha Noi'
@@ -33,7 +33,7 @@ export class CustomerDAO {
       name: 'Le Tran Anh Tuyet',
       birthday: '21/07/1992',
       gender: 'Khác',
-      idCard: '458363926352',
+      idCard: '4583639263',
       phone: '0332528533',
       email: 'anhtuyetle@gmail.com',
       address: 'TP HCM'
@@ -45,7 +45,7 @@ export class CustomerDAO {
       name: 'Le Tran Anh Tuyet',
       birthday: '21/07/1992',
       gender: 'Nữ',
-      idCard: '458363926352',
+      idCard: '4583639263',
       phone: '0332528533',
       email: 'anhtuyetle@gmail.com',
       address: 'TP HCM'
@@ -57,7 +57,7 @@ export class CustomerDAO {
       name: 'Le Tran Anh Tuyet',
       birthday: '21/07/1992',
       gender: 'Nữ',
-      idCard: '458363926352',
+      idCard: '4583639263',
       phone: '0332528533',
       email: 'anhtuyetle@gmail.com',
       address: 'TP HCM'
@@ -69,7 +69,7 @@ export class CustomerDAO {
       name: 'Le Tran Anh Tuyet',
       birthday: '21/07/1992',
       gender: 'Nữ',
-      idCard: '458363926352',
+      idCard: '4583639262',
       phone: '0332528533',
       email: 'anhtuyetle@gmail.com',
       address: 'TP HCM'
@@ -81,7 +81,7 @@ export class CustomerDAO {
       name: 'Le Tran Anh Tuyet',
       birthday: '21/07/1992',
       gender: 'Nữ',
-      idCard: '458363926352',
+      idCard: '4583639262',
       phone: '0332528533',
       email: 'anhtuyetle@gmail.com',
       address: 'TP HCM'
@@ -93,7 +93,7 @@ export class CustomerDAO {
       name: 'Le Tran Anh Tuyet',
       birthday: '21/07/1992',
       gender: 'Nữ',
-      idCard: '458363926352',
+      idCard: '4583639352',
       phone: '0332528533',
       email: 'anhtuyetle@gmail.com',
       address: 'TP HCM'
@@ -105,7 +105,7 @@ export class CustomerDAO {
       name: 'Le Tran Anh Tuyet',
       birthday: '21/07/1992',
       gender: 'Nữ',
-      idCard: '458363926352',
+      idCard: '4583626352',
       phone: '0332528533',
       email: 'anhtuyetle@gmail.com',
       address: 'TP HCM'
@@ -117,7 +117,7 @@ export class CustomerDAO {
       name: 'Le Tran Anh Tuyet',
       birthday: '21/07/1992',
       gender: 'Nữ',
-      idCard: '458363926352',
+      idCard: '4563926352',
       phone: '0332528533',
       email: 'anhtuyetle@gmail.com',
       address: 'TP HCM'

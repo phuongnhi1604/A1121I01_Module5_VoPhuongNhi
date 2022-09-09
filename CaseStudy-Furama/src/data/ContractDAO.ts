@@ -35,6 +35,7 @@ export class ContractDAO {
     startDay: '02/09/2022',
     endDay: '05/09/2022',
     deposit: 500000,
+    total: 10000000
   },
     {
       id: 2,
@@ -68,6 +69,7 @@ export class ContractDAO {
       startDay: '10/08/2022',
       endDay: '13/08/2022',
       deposit: 500000,
+      total: 10000000
     }
   ];
 

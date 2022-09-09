@@ -78,15 +78,15 @@
           </div>
           <div class="form-group">
             <label>ID Card</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="id_card">
-            <div *ngIf="updateForm.get('id_card')?.invalid && (updateForm.get('id_card')?.touched||updateForm.get('id_card')?.dirty)">
-              <div [hidden]="!updateForm.get('id_card').errors.required">
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="idCard">
+            <div *ngIf="updateForm.get('idCard')?.invalid && (updateForm.get('idCard')?.touched||updateForm.get('idCard')?.dirty)">
+              <div [hidden]="!updateForm.get('idCard').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Bạn chưa nhập CMND.</small>
               </div>
             </div>
-            <div *ngIf="updateForm.get('id_card')?.invalid && (updateForm.get('id_card')?.touched||updateForm.get('id_card')?.dirty)">
-              <div [hidden]="!updateForm.get('id_card').errors.pattern">
+            <div *ngIf="updateForm.get('idCard')?.invalid && (updateForm.get('idCard')?.touched||updateForm.get('idCard')?.dirty)">
+              <div [hidden]="!updateForm.get('idCard').errors.pattern">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Nhập CMND chưa đúng định dạng.</small>
               </div>

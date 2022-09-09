@@ -28,7 +28,7 @@ export class CustomerEditComponent implements OnInit {
         name: new FormControl(customer.name, [Validators.required]),
         birthday: new FormControl(customer.birthday, [Validators.required]),
         gender: new FormControl(customer.gender, [Validators.required]),
-        id_card: new FormControl(customer.idCard, [Validators.required, Validators.pattern('^[0-9]{10,12}$')]),
+        idCard: new FormControl(customer.idCard, [Validators.required, Validators.pattern('^[0-9]{10,12}$')]),
         phone: new FormControl(customer.phone, [Validators.required, Validators.pattern('^(84|0)9([0|1])[0-9]{7}$')]),
         email: new FormControl(customer.email, [Validators.required, Validators.pattern('(\\W|^)[\\w.+\\-]*@gmail\\.com(\\W|$)')]),
         address: new FormControl(customer.address, [Validators.required])

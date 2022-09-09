@@ -24,9 +24,9 @@
           </div>
           <div class="form-group">
             <label>Start Date</label>
-            <input type="date" style="background-color: #FEFBE7" formControlName="start_day" class="form-control">
-            <div *ngIf="formCreate.get('start_day')?.invalid && (formCreate.get('start_day')?.touched||formCreate.get('start_day')?.dirty)">
-              <div [hidden]="!formCreate.get('start_day').errors.required">
+            <input type="date" style="background-color: #FEFBE7" formControlName="startDay" class="form-control">
+            <div *ngIf="formCreate.get('startDay')?.invalid && (formCreate.get('startDay')?.touched||formCreate.get('startDay')?.dirty)">
+              <div [hidden]="!formCreate.get('startDay').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Bạn chưa chọn ngày bắt đầu.</small>
               </div>
@@ -34,9 +34,9 @@
           </div>
           <div class="form-group">
             <label>End Date</label>
-            <input type="date" style="background-color: #FEFBE7" formControlName="end_day" class="form-control">
-            <div *ngIf="formCreate.get('end_day')?.invalid && (formCreate.get('end_day')?.touched||formCreate.get('end_day')?.dirty)">
-              <div [hidden]="!formCreate.get('end_day').errors.required">
+            <input type="date" style="background-color: #FEFBE7" formControlName="endDay" class="form-control">
+            <div *ngIf="formCreate.get('endDay')?.invalid && (formCreate.get('endDay')?.touched||formCreate.get('endDay')?.dirty)">
+              <div [hidden]="!formCreate.get('endDay').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Bạn chưa chọn ngày kết thúc.</small>
               </div>
@@ -82,7 +82,7 @@
             <label>Customer</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="customer">
               <option value="" selected>Choose Customer ID</option>
-              <option value="{{customer.code}}" *ngFor="let customer of customers">{{customer.code}}</option>
+              <option value="{{customer}}" *ngFor="let customer of customers">{{customer.code}}</option>
             </select>
             <div *ngIf="formCreate.get('customer')?.invalid && (formCreate.get('customer')?.touched||formCreate.get('customer')?.dirty)">
               <div [hidden]="!formCreate.get('customer').errors.required">
@@ -93,12 +93,12 @@
           </div>
           <div class="form-group">
             <label>Service</label>
-            <select class="custom-select" style="background-color: #FEFBE7" formControlName="service">
+            <select class="custom-select" style="background-color: #FEFBE7" formControlName="facility">
               <option value="" selected>Choose Service ID</option>
               <option value="{{facility}}" *ngFor="let facility of facilities">{{facility.id}}</option>
             </select>
-            <div *ngIf="formCreate.get('service')?.invalid && (formCreate.get('service')?.touched||formCreate.get('service')?.dirty)">
-              <div [hidden]="!formCreate.get('service').errors.required">
+            <div *ngIf="formCreate.get('facility')?.invalid && (formCreate.get('facility')?.touched||formCreate.get('facility')?.dirty)">
+              <div [hidden]="!formCreate.get('facility').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
                   Bạn chưa chọn dịch vụ.</small>
               </div>
