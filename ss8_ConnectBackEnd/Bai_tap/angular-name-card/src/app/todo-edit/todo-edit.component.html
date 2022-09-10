@@ -1,5 +1,7 @@
-<form [formGroup]="editForm" (ngSubmit)="updateTodo(id)">
-  <label>Content: </label>
-  <input type="text" formControlName="content">
-  <button>Update</button>
-</form>
+<h2 class="text-center">
+  Todo Edit
+</h2>
+<div class="col-md-8 offset-md-2">
+  <input type="text" class="form-control" [formControl]="editContent" [value]="todoEdit.content" (change)="updateTodo()">
+</div>
+

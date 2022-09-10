@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {TodoService} from '../service/todo.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Todo} from '../todo';
+import {validate} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
   selector: 'app-todo-edit',
@@ -10,8 +11,8 @@ import {Todo} from '../todo';
   styleUrls: ['./todo-edit.component.css']
 })
 export class TodoEditComponent implements OnInit {
-  editForm: FormGroup;
-  todo: Todo;
+  editContent = new FormControl();
+  todoEdit: Todo = {};
   id: number;
 
   constructor(private todoService: TodoService, private activatedRoute: ActivatedRoute,
@@ -19,26 +20,23 @@ export class TodoEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.editForm = new FormGroup({
-      id: new FormControl(),
-      content: new FormControl()
-    });
-
     this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
       this.id = +param.get('id');
       this.todoService.findById(this.id).subscribe((data) => {
-        this.todo = data;
+        this.todoEdit = data;
       });
     });
   }
 
-  updateTodo(id: number) {
-    this.todo = this.editForm.value;
-    this.todoService.updateTodo(id, this.todo).subscribe(
-      () => {},
-      () => {},
-      () => {this.router.navigateByUrl(''); }
-    );
+  updateTodo() {
+    const contentValue = this.editContent.value;
+    const todo: Todo = {
+      id: this.id,
+      content: contentValue,
+      complete: false
+    };
+    this.todoService.updateTodo(todo.id, todo);
+    this.router.navigateByUrl('');
   }
 
 }

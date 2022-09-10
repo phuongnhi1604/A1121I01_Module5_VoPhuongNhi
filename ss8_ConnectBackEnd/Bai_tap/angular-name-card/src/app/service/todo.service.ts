@@ -13,12 +13,16 @@ export class TodoService {
     return this.http.get<Todo[]>(this.API_URL);
   }
 
-  saveToDo(todo): Observable<Todo> {
-    return this.http.post<Todo>(this.API_URL, todo);
+  saveToDo(contentNew: string): Observable<void> {
+    const todo: Todo = {
+      content: contentNew,
+      complete: false
+    };
+    return this.http.post<void>(this.API_URL, todo);
   }
 
   findById(id: number): Observable<Todo> {
-    return this.http.get<Todo>(`${this.API_URL}/${id}`);
+    return this.http.get<Todo>(this.API_URL + '/' + id);
   }
 
   updateTodo(id: number, todo: Todo): Observable<Todo> {

@@ -12,5 +12,16 @@
       "id": 3,
       "name": "LG"
     }
+  ],
+  "products": [
+    {
+      "name": "y",
+      "price": 6,
+      "description": "fgjfgj",
+      "category": {
+        "id": "2"
+      },
+      "id": 1
+    }
   ]
 }
