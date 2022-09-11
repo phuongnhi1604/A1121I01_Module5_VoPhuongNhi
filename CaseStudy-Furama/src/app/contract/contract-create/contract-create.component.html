@@ -7,22 +7,6 @@
       <div class="row d-flex">
         <div class="col-6">
           <div class="form-group">
-            <label>Contract ID</label>
-            <input type="text" style="background-color: #FEFBE7" formControlName="id" class="form-control" placeholder="Enter ID">
-            <div *ngIf="formCreate.get('id')?.invalid && (formCreate.get('id')?.touched||formCreate.get('id')?.dirty)">
-              <div [hidden]="!formCreate.get('id').errors.required">
-                <small class="form-text" style="color: red; font-style: italic" >
-                  Bạn chưa nhập id.</small>
-              </div>
-            </div>
-            <div *ngIf="formCreate.get('id')?.invalid && (formCreate.get('id')?.touched||formCreate.get('id')?.dirty)">
-              <div [hidden]="!formCreate.get('id').errors.pattern">
-                <small class="form-text" style="color: red; font-style: italic" >
-                  Nhập id phải là kiểu số.</small>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
             <label>Start Date</label>
             <input type="date" style="background-color: #FEFBE7" formControlName="startDay" class="form-control">
             <div *ngIf="formCreate.get('startDay')?.invalid && (formCreate.get('startDay')?.touched||formCreate.get('startDay')?.dirty)">
@@ -81,8 +65,8 @@
           <div class="form-group">
             <label>Customer</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="customer">
-              <option value="" selected>Choose Customer ID</option>
-              <option value="{{customer}}" *ngFor="let customer of customers">{{customer.code}}</option>
+              <option value="" disabled selected>Choose Customer Code</option>
+              <option [ngValue]="customer" *ngFor="let customer of customers">{{customer.code}}</option>
             </select>
             <div *ngIf="formCreate.get('customer')?.invalid && (formCreate.get('customer')?.touched||formCreate.get('customer')?.dirty)">
               <div [hidden]="!formCreate.get('customer').errors.required">
@@ -94,8 +78,8 @@
           <div class="form-group">
             <label>Service</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="facility">
-              <option value="" selected>Choose Service ID</option>
-              <option value="{{facility}}" *ngFor="let facility of facilities">{{facility.id}}</option>
+              <option value="" disabled selected>Choose Service ID</option>
+              <option [ngValue]="facility" *ngFor="let facility of facilities">{{facility.id}}</option>
             </select>
             <div *ngIf="formCreate.get('facility')?.invalid && (formCreate.get('facility')?.touched||formCreate.get('facility')?.dirty)">
               <div [hidden]="!formCreate.get('facility').errors.required">

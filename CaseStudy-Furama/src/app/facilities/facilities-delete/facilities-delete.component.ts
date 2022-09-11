@@ -18,19 +18,21 @@ export class FacilitiesDeleteComponent implements OnInit {
               private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
       this.id = +param.get('id');
+      this.getFacility(this.id);
     });
   }
 
   ngOnInit(): void {
   }
 
-  getFacility() {
-    return this.facilityService.findByID(this.id).subscribe((data) => {
+  getFacility(id: number) {
+    return this.facilityService.findByID(id).subscribe((data) => {
       this.facility = data;
     });
   }
   deleteFacility(id: number) {
     this.facilityService.deleteById(id).subscribe(() => {
+      alert('Xóa thành công');
       this.router.navigateByUrl('/facilities/list');
       // tslint:disable-next-line:no-shadowed-variable
     }, error => {

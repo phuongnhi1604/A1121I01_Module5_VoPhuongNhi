@@ -3,7 +3,7 @@
     <h2>Contract List</h2>
   </div>
   <div>
-    <a [routerLink]="['/contractCreate']">Create new contract</a>
+    <a class="ml-5 btn btn-outline-dark" style="background-color: #DAE5D0" [routerLink]="['/contracts/create']">Create new contract</a>
   </div>
   <div class="mr-3 ml-3 mt-3">
     <table id="tableContract" class="table table-hover table-fixed">
@@ -13,7 +13,7 @@
         <th>Start Date</th>
         <th>End Date</th>
         <th>Deposit</th>
-        <th>Customer ID</th>
+        <th>Customer Code</th>
         <th>Service ID</th>
       </tr>
       </thead>
@@ -23,7 +23,7 @@
       <tr *ngFor="let contract of contractList | paginate: {itemsPerPage: 1, currentPage: p}">
         <th scope="row">{{contract.id}}</th>
         <td>{{contract.startDay | date: 'dd/MM/yyyy'}}</td>
-        <td>{{contract.endDay }}</td>
+        <td>{{contract.endDay | date: 'dd/MM/yyyy'}}</td>
         <td>{{contract.deposit}}</td>
         <td>{{contract.customer.code}}</td>
         <td>{{contract.facility.id}}</td>

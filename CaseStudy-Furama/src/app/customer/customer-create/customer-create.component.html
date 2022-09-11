@@ -7,24 +7,8 @@
       <div class="row d-flex">
         <div class="col-6">
           <div class="form-group">
-            <label>Customer ID</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="id">
-            <div *ngIf="customerCreateForm.get('id')?.invalid && (customerCreateForm.get('id')?.touched||customerCreateForm.get('id')?.dirty)">
-              <div [hidden]="!customerCreateForm.get('id').errors.required">
-                <small class="form-text" style="color: red; font-style: italic" >
-                  Bạn chưa nhập id.</small>
-              </div>
-            </div>
-            <div *ngIf="customerCreateForm.get('id')?.invalid && (customerCreateForm.get('id')?.touched||customerCreateForm.get('id')?.dirty)">
-              <div [hidden]="!customerCreateForm.get('id').errors.pattern">
-                <small class="form-text" style="color: red; font-style: italic" >
-                  Nhập id phải là kiểu số.</small>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
             <label>Customer Code</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="code">
+            <input type="text" class="form-control" style="background-color: #FEFBE7" placeholder="Enter Customer Code" formControlName="code">
             <div *ngIf="customerCreateForm.get('code')?.invalid && (customerCreateForm.get('code')?.touched||customerCreateForm.get('code')?.dirty)">
               <div [hidden]="!customerCreateForm.get('code').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
@@ -34,15 +18,15 @@
             <div *ngIf="customerCreateForm.get('code')?.invalid && (customerCreateForm.get('code')?.touched||customerCreateForm.get('code')?.dirty)">
               <div [hidden]="!customerCreateForm.get('code').errors.pattern">
                 <small class="form-text" style="color: red; font-style: italic" >
-                  Nhập mã khách theo định dạng KH-XXXX.</small>
+                  Nhập mã khách theo định dạng KHXXXX.</small>
               </div>
             </div>
           </div>
           <div class="form-group">
             <label>Customer Type</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="type">
-              <option value="">Choose Customer Type</option>
-              <option value="{{type}}" *ngFor="let type of customerTypes">{{type}}</option>
+              <option value="" disabled selected>Choose Customer Type</option>
+              <option [ngValue]="type" *ngFor="let type of customerTypes">{{type.name}}</option>
             </select>
             <div *ngIf="customerCreateForm.get('type')?.invalid && (customerCreateForm.get('type')?.touched || customerCreateForm.get('type')?.dirty)">
               <small class="form-text" style="color: red; font-style: italic">Bạn chưa chọn loại khách.</small>
@@ -50,7 +34,7 @@
           </div>
           <div class="form-group">
             <label>Customer Name</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="name">
+            <input type="text" class="form-control" style="background-color: #FEFBE7" placeholder="Enter Customer Name" formControlName="name">
             <div *ngIf="customerCreateForm.get('name')?.invalid && (customerCreateForm.get('name')?.touched||customerCreateForm.get('name')?.dirty)">
               <div [hidden]="!customerCreateForm.get('name').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
@@ -68,8 +52,6 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-6" style="margin-top: 38px">
           <div class="form-group d-flex">
             <label>Gender: </label>
             <div class="form-check" *ngFor="let gender of genders">
@@ -77,9 +59,11 @@
                 <input type="radio" formControlName="gender" [value]="gender">{{gender}} </label>
             </div>
           </div>
+        </div>
+        <div class="col-6">
           <div class="form-group">
             <label>ID Card</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="idCard">
+            <input type="text" class="form-control" placeholder="Enter ID Card" style="background-color: #FEFBE7" formControlName="idCard">
             <div *ngIf="customerCreateForm.get('idCard')?.invalid && (customerCreateForm.get('idCard')?.touched||customerCreateForm.get('idCard')?.dirty)">
               <div [hidden]="!customerCreateForm.get('idCard').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
@@ -95,7 +79,7 @@
           </div>
           <div class="form-group">
             <label>Phone Number</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="phone">
+            <input type="text" class="form-control" placeholder="Enter Phone Number" style="background-color: #FEFBE7" formControlName="phone">
             <div *ngIf="customerCreateForm.get('phone')?.invalid && (customerCreateForm.get('phone')?.touched||customerCreateForm.get('phone')?.dirty)">
               <div [hidden]="!customerCreateForm.get('phone').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
@@ -111,7 +95,7 @@
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="email">
+            <input type="text" class="form-control"  placeholder="Enter Email" style="background-color: #FEFBE7" formControlName="email">
             <div *ngIf="customerCreateForm.get('email')?.invalid && (customerCreateForm.get('email')?.touched||customerCreateForm.get('email')?.dirty)">
               <div [hidden]="!customerCreateForm.get('email').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >
@@ -127,7 +111,7 @@
           </div>
           <div class="form-group">
             <label>Address</label>
-            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="address">
+            <input type="text" class="form-control" placeholder="Enter Address" style="background-color: #FEFBE7" formControlName="address">
             <div *ngIf="customerCreateForm.get('address')?.invalid && (customerCreateForm.get('address')?.touched||customerCreateForm.get('address')?.dirty)">
               <div [hidden]="!customerCreateForm.get('address').errors.required">
                 <small class="form-text" style="color: red; font-style: italic" >

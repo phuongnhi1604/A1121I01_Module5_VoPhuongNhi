@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerServiceService} from '../../service/customer-service.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ICustomerType} from '../../model/ICustomerType';
+import {CustomerTypeService} from '../../service/customer-type.service';
 
 @Component({
   selector: 'app-customer-create',
@@ -10,15 +12,16 @@ import {Router} from '@angular/router';
 })
 export class CustomerCreateComponent implements OnInit {
   customerCreateForm: FormGroup;
-  customerTypes: Array<string> = ['Diamond', 'Platinum', 'Gold', 'Silver', 'Member'];
+  customerTypes: ICustomerType[] = [];
+  id: number;
   genders: Array<string> = ['Nam', 'Nữ', 'Khác'];
   constructor(private customerService: CustomerServiceService,
-              private router: Router) { }
+              private router: Router, private customerTypeService: CustomerTypeService) {
+  }
 
   ngOnInit(): void {
     this.customerCreateForm = new FormGroup({
-      id: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
-      code: new FormControl('', [Validators.required, Validators.pattern('^KH-[0-9]{4}$')]),
+      code: new FormControl('', [Validators.required, Validators.pattern('^KH[0-9]{4}$')]),
       type: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required]),
       birthday: new FormControl('', [Validators.required]),
@@ -28,14 +31,27 @@ export class CustomerCreateComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.pattern('(\\W|^)[\\w.+\\-]*@gmail\\.com(\\W|$)')]),
       address: new FormControl('', [Validators.required])
     });
+    this.getAllCustomerTypes();
   }
 
   createCustomer() {
-    this.customerService.createCustomer(this.customerCreateForm.value);
-    this.router.navigateByUrl('customerList');
+    const customer = this.customerCreateForm.value;
+    this.customerService.createCustomer(customer).subscribe(() => {
+      this.customerCreateForm.reset();
+      alert('Tạo mới thành công');
+      this.router.navigateByUrl('/customers/list');
+    }, error => {
+      console.log(error);
+    });
   }
 
   formReset() {
     this.customerCreateForm.reset();
+  }
+
+  getAllCustomerTypes() {
+    this.customerTypeService.getAll().subscribe((customerTypes) => {
+      this.customerTypes = customerTypes;
+    });
   }
 }

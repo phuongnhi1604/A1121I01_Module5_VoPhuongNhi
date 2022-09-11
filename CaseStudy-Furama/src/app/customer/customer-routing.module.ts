@@ -7,6 +7,7 @@ import {FacilitiesDeleteComponent} from '../facilities/facilities-delete/facilit
 import {CustomerListComponent} from './customer-list/customer-list.component';
 import {CustomerCreateComponent} from './customer-create/customer-create.component';
 import {CustomerEditComponent} from './customer-edit/customer-edit.component';
+import {CustomerDeleteComponent} from './customer-delete/customer-delete.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: CustomerEditComponent
+  },
+  {
+    path: 'delete/:id',
+    component: CustomerDeleteComponent
   },
 ];
 

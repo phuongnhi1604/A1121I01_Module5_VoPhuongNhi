@@ -73,7 +73,7 @@
           <div class="form-group">
             <label>Rent Type</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="rentType">
-              <option selected disabled [ngValue]="null">Choose Rent Type</option>
+              <option value="" disabled selected>Choose Rent Type</option>
               <option [ngValue]="rentType.id" *ngFor="let rentType of rentTypes">{{rentType.name}}</option>
             </select>
             <div *ngIf="formCreate.get('rentType')?.invalid && (formCreate.get('rentType')?.touched||formCreate.get('rentType')?.dirty)">
@@ -86,7 +86,7 @@
           <div class="form-group">
             <label>Service Type</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="serviceType">
-              <option selected disabled [ngValue]="null">Choose Service Type</option>
+              <option value="" disabled selected>Choose Service Type</option>
               <option [ngValue]="svType" *ngFor="let svType of serviceTypes">{{svType.name}}</option>
             </select>
             <div *ngIf="formCreate.get('serviceType')?.invalid && (formCreate.get('serviceType')?.touched||formCreate.get('serviceType')?.dirty)">

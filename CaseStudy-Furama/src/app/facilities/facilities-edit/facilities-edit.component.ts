@@ -55,10 +55,8 @@ export class FacilitiesEditComponent implements OnInit {
     facility.rentType = {
       id: facility.rentType
     };
-    facility.serviceType = {
-      id: facility.serviceType
-    };
     this.facilityService.updateById(id, facility).subscribe(() => {
+      alert('Cập nhật thành công');
       this.router.navigateByUrl('facilities/list');
     }, error => {
       console.log(error);

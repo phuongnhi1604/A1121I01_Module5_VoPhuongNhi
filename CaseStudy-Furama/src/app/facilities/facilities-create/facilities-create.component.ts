@@ -43,12 +43,9 @@ export class FacilitiesCreateComponent implements OnInit {
     facility.rentType = {
       id: facility.rentType
     };
-    facility.serviceType = {
-      id: facility.serviceType.id,
-      name: facility.serviceType.name
-    };
     this.facilityService.addFacility(facility).subscribe(() => {
       this.formCreate.reset();
+      alert('Tạo mới thành công');
       this.router.navigateByUrl('facilities/list');
     }, error => {
       console.log(error);

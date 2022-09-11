@@ -11,8 +11,8 @@ import { FacilitiesCreateComponent } from './facilities/facilities-create/facili
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
 import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
-import { ContractCreateComponent } from './contract-create/contract-create.component';
-import { ContractListComponent } from './contract-list/contract-list.component';
+import { ContractCreateComponent } from './contract/contract-create/contract-create.component';
+import { ContractListComponent } from './contract/contract-list/contract-list.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';

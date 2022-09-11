@@ -18,7 +18,7 @@
             <div *ngIf="updateForm.get('code')?.invalid && (updateForm.get('code')?.touched||updateForm.get('code')?.dirty)">
               <div [hidden]="!updateForm.get('code').errors.pattern">
                 <small class="form-text" style="color: red; font-style: italic" >
-                  Nhập mã khách theo định dạng KH-XXXX.</small>
+                  Nhập mã khách theo định dạng KHXXXX.</small>
               </div>
             </div>
           </div>

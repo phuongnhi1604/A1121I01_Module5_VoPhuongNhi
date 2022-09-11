@@ -7,22 +7,6 @@
       <div class="row d-flex">
         <div class="col-6">
           <div class="form-group">
-            <label>Service ID</label>
-            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="id">
-            <div *ngIf="editForm.get('id')?.invalid && (editForm.get('id')?.dirty)">
-              <div [hidden]="!editForm.get('id').errors.required">
-                <small class="form-text" style="color: red; font-style: italic" >
-                  Bạn chưa nhập id.</small>
-              </div>
-              <div *ngIf="editForm.get('id')?.invalid && (editForm.get('id')?.touched||editForm.get('id')?.dirty)">
-                <div [hidden]="!editForm.get('id').errors.pattern">
-                  <small class="form-text" style="color: red; font-style: italic" >
-                    Nhập id phải là kiểu số.</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
             <label>Service Name</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="name">
             <div *ngIf="editForm.get('name')?.invalid && (editForm.get('name')?.touched||editForm.get('name')?.dirty)">
@@ -99,13 +83,11 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-6">
           <div class="form-group">
             <label>Service Type</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="serviceType">
               <option disabled>Choose Service Type</option>
-              <option *ngFor="let typeService of typeServices" [value]="typeService.id">{{typeService.name}}</option>
+              <option *ngFor="let typeService of typeServices" [ngValue]="typeService">{{typeService.name}}</option>
             </select>
             <div *ngIf="editForm.get('serviceType')?.invalid && (editForm.get('serviceType')?.touched||editForm.get('serviceType')?.dirty)">
               <div [hidden]="!editForm.get('serviceType').errors.required">
@@ -114,6 +96,8 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="col-6">
           <div class="form-group">
             <label>Standard Room</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName = "standardRoom">

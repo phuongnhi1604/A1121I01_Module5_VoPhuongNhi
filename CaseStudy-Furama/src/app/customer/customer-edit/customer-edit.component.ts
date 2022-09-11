@@ -32,7 +32,7 @@ export class CustomerEditComponent implements OnInit {
     return this.customerService.findById(id).subscribe((customer) => {
       this.updateForm = new FormGroup({
         id: new FormControl(customer.id, [Validators.required, Validators.pattern('^\\d+$')]),
-        code: new FormControl(customer.code, [Validators.required, Validators.pattern('^KH-[0-9]{4}$')]),
+        code: new FormControl(customer.code, [Validators.required, Validators.pattern('^KH[0-9]{4}$')]),
         type: new FormControl(customer.type.id, [Validators.required]),
         name: new FormControl(customer.name, [Validators.required]),
         birthday: new FormControl(customer.birthday, [Validators.required]),
@@ -46,9 +46,6 @@ export class CustomerEditComponent implements OnInit {
   }
   updateCustomer(id: number) {
     const customer = this.updateForm.value;
-    customer.type = {
-      id: customer.type
-    };
     this.customerService.updateById(id, customer).subscribe(() => {
       alert('Cập nhật thành công');
       this.router.navigateByUrl('customers/list');
