@@ -3,7 +3,7 @@
     <h2>Customer List</h2>
   </div>
   <div>
-    <a [routerLink]="['/customerCreate']">Create new customer</a>
+    <a [routerLink]="['/customers/create']">Create new customer</a>
   </div>
   <div class="mr-3 ml-3 mt-3">
     <table class="table table-hover">
@@ -29,17 +29,17 @@
       <tr *ngFor="let customer of customers | paginate: {itemsPerPage: 5, currentPage: p}">
         <th scope="row">{{customer.id}}</th>
         <td>{{customer.code}}</td>
-        <td>{{customer.type}}</td>
-        <td>{{customer.name}}</td>
-        <td>{{customer.birthday}}</td>
+        <td>{{customer.type.name}}</td>
+        <td>{{customer.name | titlecase}}</td>
+        <td>{{customer.birthday | date: 'dd/MM/yyyy'}}</td>
         <td>{{customer.gender}}</td>
         <td>{{customer.idCard}}</td>
         <td>{{customer.phone}}</td>
         <td>{{customer.email}}</td>
-        <td>{{customer.address}}</td>
+        <td>{{customer.address | titlecase}}</td>
         <td>
           <a type="button" class="btn my-2 my-sm-0 btn-outline-dark"
-                  style="background-color: #DAE5D0; color: #15133C" [routerLink]="['/customerUpdate',customer.id]"> Edit
+                  style="background-color: #DAE5D0; color: #15133C" [routerLink]="['/customers/edit',customer.id]"> Edit
           </a>
         </td>
         <td>

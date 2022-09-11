@@ -7,22 +7,6 @@
       <div class="row d-flex">
         <div class="col-6">
           <div class="form-group">
-            <label>Service ID</label>
-            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="id" placeholder="Enter ID">
-            <div *ngIf="formCreate.get('id')?.invalid && (formCreate.get('id')?.touched||formCreate.get('id')?.dirty)">
-              <div [hidden]="!formCreate.get('id').errors.required">
-                <small class="form-text" style="color: red; font-style: italic" >
-                  Bạn chưa nhập id.</small>
-              </div>
-            </div>
-            <div *ngIf="formCreate.get('id')?.invalid && (formCreate.get('id')?.touched||formCreate.get('id')?.dirty)">
-              <div [hidden]="!formCreate.get('id').errors.pattern">
-                <small class="form-text" style="color: red; font-style: italic" >
-                  Nhập id phải là kiểu số.</small>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
             <label>Service Name</label>
             <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="name" placeholder="Enter service name">
             <div *ngIf="formCreate.get('name')?.invalid && (formCreate.get('name')?.touched||formCreate.get('name')?.dirty)">
@@ -89,8 +73,8 @@
           <div class="form-group">
             <label>Rent Type</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="rentType">
-              <option value="">Choose Rent Type</option>
-              <option value="{{rentType}}" *ngFor="let rentType of rentTypes">{{rentType}}</option>
+              <option selected disabled [ngValue]="null">Choose Rent Type</option>
+              <option [ngValue]="rentType.id" *ngFor="let rentType of rentTypes">{{rentType.name}}</option>
             </select>
             <div *ngIf="formCreate.get('rentType')?.invalid && (formCreate.get('rentType')?.touched||formCreate.get('rentType')?.dirty)">
               <div [hidden]="!formCreate.get('rentType').errors.required">
@@ -99,13 +83,11 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-6">
           <div class="form-group">
             <label>Service Type</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="serviceType">
-              <option value="">Choose Service Type</option>
-              <option value="{{svType}}" *ngFor="let svType of serviceTypes">{{svType}}</option>
+              <option selected disabled [ngValue]="null">Choose Service Type</option>
+              <option [ngValue]="svType" *ngFor="let svType of serviceTypes">{{svType.name}}</option>
             </select>
             <div *ngIf="formCreate.get('serviceType')?.invalid && (formCreate.get('serviceType')?.touched||formCreate.get('serviceType')?.dirty)">
               <div [hidden]="!formCreate.get('serviceType').errors.required">
@@ -114,6 +96,8 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="col-6">
           <div class="form-group">
             <label>Standard Room</label>
             <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="standardRoom" placeholder="Enter Standard Room">

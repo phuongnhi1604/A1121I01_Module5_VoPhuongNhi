@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {IFacility} from '../model/IFacility';
-import {FacilityDAO} from '../../data/FacilityDAO';
-import {FacilityServiceService} from '../service/facility-service.service';
+import {IFacility} from '../../model/IFacility';
+import {FacilityServiceService} from '../../service/facility-service.service';
 
 @Component({
   selector: 'app-facilities-list',
@@ -14,7 +13,12 @@ export class FacilitiesListComponent implements OnInit {
   constructor(private facilityService: FacilityServiceService) { }
 
   ngOnInit(): void {
-    this.facilities = this.facilityService.getAllFacilities();
+    this.getAll();
   }
 
+  getAll() {
+    this.facilityService.getAllFacilities().subscribe(facilities => {
+      this.facilities = facilities;
+    });
+  }
 }

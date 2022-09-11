@@ -89,7 +89,8 @@
           <div class="form-group">
             <label>Rent Type</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName = "rentType">
-              <option *ngFor="let rentType of rentTypes">{{rentType}}</option>
+              <option disabled>Choose Rent Type</option>
+              <option *ngFor="let rentType of rentTypes" [value]="rentType.id">{{rentType.name}}</option>
             </select>
             <div *ngIf="editForm.get('rentType')?.invalid && (editForm.get('rentType')?.touched||editForm.get('rentType')?.dirty)">
               <div [hidden]="!editForm.get('rentType').errors.required">
@@ -103,7 +104,8 @@
           <div class="form-group">
             <label>Service Type</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="serviceType">
-              <option *ngFor="let typeService of typeServices">{{typeService}}</option>
+              <option disabled>Choose Service Type</option>
+              <option *ngFor="let typeService of typeServices" [value]="typeService.id">{{typeService.name}}</option>
             </select>
             <div *ngIf="editForm.get('serviceType')?.invalid && (editForm.get('serviceType')?.touched||editForm.get('serviceType')?.dirty)">
               <div [hidden]="!editForm.get('serviceType').errors.required">
@@ -179,7 +181,7 @@
       <div class="wide grid button__container">
         <button type="submit" class="btn btn-outline-dark mb-4" style="background-color: #DAE5D0">Save
         </button>
-        <button type="submit" class="btn btn-outline-dark ml-4 mb-4" style="background-color: #DAE5D0">Reset
+        <button type="submit" class="btn btn-outline-dark ml-4 mb-4" (click)="resetForm()" style="background-color: #DAE5D0">Reset
         </button>
       </div>
     </form>

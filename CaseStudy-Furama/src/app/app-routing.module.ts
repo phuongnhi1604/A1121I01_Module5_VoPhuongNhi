@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {CustomerListComponent} from './customer-list/customer-list.component';
-import {FacilitiesListComponent} from './facilities-list/facilities-list.component';
-import {CustomerCreateComponent} from './customer-create/customer-create.component';
+import {CustomerListComponent} from './customer/customer-list/customer-list.component';
+import {FacilitiesListComponent} from './facilities/facilities-list/facilities-list.component';
+import {CustomerCreateComponent} from './customer/customer-create/customer-create.component';
 import {ContractListComponent} from './contract-list/contract-list.component';
-import {CustomerEditComponent} from './customer-edit/customer-edit.component';
-import {FacilitiesEditComponent} from './facilities-edit/facilities-edit.component';
-import {FacilitiesCreateComponent} from './facilities-create/facilities-create.component';
+import {CustomerEditComponent} from './customer/customer-edit/customer-edit.component';
+import {FacilitiesEditComponent} from './facilities/facilities-edit/facilities-edit.component';
+import {FacilitiesCreateComponent} from './facilities/facilities-create/facilities-create.component';
 import {ContractCreateComponent} from './contract-create/contract-create.component';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'facilitiesList'},
-  {path: 'facilitiesList', component: FacilitiesListComponent},
-  {path: 'customerList', component: CustomerListComponent},
-  {path: 'customerCreate', component: CustomerCreateComponent},
-  {path: 'customerUpdate/:id', component: CustomerEditComponent},
-  {path: 'facilitiesUpdate/:id', component: FacilitiesEditComponent},
-  {path: 'facilitiesCreate', component: FacilitiesCreateComponent},
+  {
+    path: 'facilities',
+    loadChildren: () => import('./facilities/facilities.module').then(module => module.FacilitiesModule)
+  },
+  {path: '', component: FacilitiesListComponent},
+  {
+    path: 'customers',
+    loadChildren: () => import('./customer/customer.module').then(module => module.CustomerModule)
+  },
   {path: 'contractsList', component: ContractListComponent},
   {path: 'contractCreate', component: ContractCreateComponent}
 ];

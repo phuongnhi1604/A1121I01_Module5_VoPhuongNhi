@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ICustomer} from '../model/ICustomer';
-import {CustomerDAO} from '../../data/CustomerDAO';
-import {CustomerServiceService} from '../service/customer-service.service';
+import {ICustomer} from '../../model/ICustomer';
+import {CustomerServiceService} from '../../service/customer-service.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -14,7 +13,13 @@ export class CustomerListComponent implements OnInit {
   constructor(private customerService: CustomerServiceService) { }
 
   ngOnInit(): void {
-    this.customers = this.customerService.getAllCustomers();
+    this.getAll();
+  }
+
+  getAll() {
+    return this.customerService.getAllCustomers().subscribe((customers) => {
+      this.customers = customers;
+    });
   }
 
 }

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {FacilityServiceService} from '../service/facility-service.service';
+import {FacilityServiceService} from '../../service/facility-service.service';
 import {Router} from '@angular/router';
+import {RentTypeService} from '../../service/rent-type.service';
+import {IRentType} from '../../model/IRentType';
+import {ServiceTypeService} from '../../service/service-type.service';
+import {IServiceType} from '../../model/IServiceType';
 
 @Component({
   selector: 'app-facilities-create',
@@ -10,13 +14,14 @@ import {Router} from '@angular/router';
 })
 export class FacilitiesCreateComponent implements OnInit {
   formCreate: FormGroup;
-  rentTypes: Array<string> = ['Ngày', 'Tháng', 'Năm'];
-  serviceTypes: Array<string> = ['Villa', 'House', 'Room'];
-  constructor(private facilityService: FacilityServiceService, private router: Router) { }
+  rentTypes: IRentType[] = [];
+  serviceTypes: IServiceType[] = [];
+  constructor(private facilityService: FacilityServiceService, private router: Router,
+              private rentTypeService: RentTypeService,
+              private serviceTypeService: ServiceTypeService) { }
 
   ngOnInit(): void {
     this.formCreate = new FormGroup({
-      id: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
       name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z\\s]{1,100}')]),
       area: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
       cost: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
@@ -29,10 +34,36 @@ export class FacilitiesCreateComponent implements OnInit {
       numberOfFloor: new FormControl('', [Validators.required, Validators.pattern('^\\d+$')]),
       image: new FormControl('', [Validators.required])
     });
+    this.getAllRentTypes();
+    this.getAllServiceTypes();
   }
 
   createFacility() {
-    this.facilityService.addFacility(this.formCreate.value);
-    this.router.navigateByUrl('');
+    const facility = this.formCreate.value;
+    facility.rentType = {
+      id: facility.rentType
+    };
+    facility.serviceType = {
+      id: facility.serviceType.id,
+      name: facility.serviceType.name
+    };
+    this.facilityService.addFacility(facility).subscribe(() => {
+      this.formCreate.reset();
+      this.router.navigateByUrl('facilities/list');
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  getAllRentTypes() {
+    this.rentTypeService.getAll().subscribe((rentTypes) => {
+      this.rentTypes = rentTypes;
+    });
+  }
+
+  getAllServiceTypes() {
+    this.serviceTypeService.getAll().subscribe((serviceTypes) => {
+      this.serviceTypes = serviceTypes;
+    });
   }
 }

@@ -1,0 +1,38 @@
+<div class="grid wide services__container" style="background-color: white">
+  <div class="row justify-content-center">
+    <h2>Facilities List</h2>
+  </div>
+  <div>
+    <a class="ml-5 btn btn-outline-dark" style="background-color: #DAE5D0" [routerLink]="['/facilities/create']">Create new facility</a>
+  </div>
+  <div class="row">
+    <div *ngFor="let facility of facilities | paginate: {itemsPerPage: 9, currentPage: p}"
+         class="col l-4 m-6 c-12 service__item">
+      <div class="card mt-5 ml-5" style="width: 18rem; height: 25rem; border: none">
+        <img class="card-img-top" style="height: 190px"
+             [src]="facility.image"
+             alt="Card image cap">
+        <div class="card-body bg_card">
+          <h5 class="card-title">{{facility.name | titlecase}}</h5>
+          <p class="card-text"><img
+            src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/20/000000/external-cost-basic-ui-elements-2.2-sbts2018-outline-color-sbts2018.png"/>
+            {{facility.cost}}</p>
+          <p class="card-text font-weight-bold" style="font-style: oblique">
+            {{facility.serviceType.name}}</p>
+          <a type="button" class="btn btn-outline-dark" style="background-color: #DAE5D0" [routerLink]="['/facilities/edit',facility.id]">Edit</a>
+          <a type="button" class="btn btn-outline-dark ml-4" style="background-color: #DAE5D0"
+                  data-toggle="modal" data-target="#exampleModal" [routerLink]="['/facilities/delete',facility.id]">
+            Delete
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wide grid pagination__container">
+    <div>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+

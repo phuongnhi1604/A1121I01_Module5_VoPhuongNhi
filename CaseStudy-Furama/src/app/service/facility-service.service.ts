@@ -1,34 +1,34 @@
 import { Injectable } from '@angular/core';
-import {FacilityDAO} from '../../data/FacilityDAO';
 import {IFacility} from '../model/IFacility';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
 
+const API_URL = `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
 })
 export class FacilityServiceService {
-  facilities: IFacility[] = this.getAllFacilities();
-  constructor() { }
 
-  getAllFacilities() {
-    return FacilityDAO.getAllFacilities();
+  constructor(private http: HttpClient) { }
+
+  getAllFacilities(): Observable<IFacility[]> {
+    return this.http.get<IFacility[]>(API_URL + '/facilities');
   }
 
-  addFacility(facility: IFacility) {
-    FacilityDAO.facilities.push(facility);
+  addFacility(facility): Observable<IFacility> {
+    return this.http.post<IFacility>(API_URL + '/facilities', facility);
   }
 
-  findByID(id: number) {
-    // tslint:disable-next-line:triple-equals
-    return FacilityDAO.facilities.find((faci) => faci.id == id);
+  findByID(id: number): Observable<IFacility> {
+    return this.http.get<IFacility>(`${API_URL}/facilities/${id}`);
   }
 
-  updateById(id: number, facility: IFacility) {
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.facilities.length; i++) {
-      // tslint:disable-next-line:triple-equals
-      if (this.facilities[i].id == id) {
-        this.facilities[i] = facility;
-      }
-    }
+  updateById(id: number, facility: IFacility): Observable<IFacility> {
+    return this.http.put<IFacility>(`${API_URL}/facilities/${id}`, facility);
+  }
+
+  deleteById(id: number): Observable<IFacility> {
+    return this.http.delete<IFacility>(`${API_URL}/facilities/${id}`);
   }
 }

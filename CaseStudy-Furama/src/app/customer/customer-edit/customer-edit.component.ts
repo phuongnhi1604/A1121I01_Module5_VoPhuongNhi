@@ -1,8 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ICustomer} from '../model/ICustomer';
-import {CustomerServiceService} from '../service/customer-service.service';
+import {ICustomer} from '../../model/ICustomer';
+import {CustomerServiceService} from '../../service/customer-service.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ICustomerType} from '../../model/ICustomerType';
+import {CustomerTypeService} from '../../service/customer-type.service';
 
 @Component({
   selector: 'app-customer-edit',
@@ -11,20 +13,27 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class CustomerEditComponent implements OnInit {
   updateForm: FormGroup;
-  customerTypes: Array<string> = ['Diamond', 'Platinum', 'Gold', 'Silver', 'Member'];
+  customerTypes: ICustomerType[] = [];
   genders: Array<string> = ['Nam', 'Nữ', 'Khác'];
   id: number;
-  constructor(private customerService: CustomerServiceService, private activatedRouter: ActivatedRoute, private router: Router) { }
+  constructor(private customerService: CustomerServiceService, private activatedRoute: ActivatedRoute, private router: Router,
+              private customerTypeService: CustomerTypeService) {
+    this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
+      this.id = +param.get('id');
+      this.getCustomer(this.id);
+    });
+  }
 
   ngOnInit(): void {
-    this.activatedRouter.paramMap.subscribe((param: ParamMap) => {
-      // tslint:disable-next-line:radix
-      this.id = parseInt(param.get('id'));
-      const customer = this.customerService.findById(this.id);
+    this.getAllCustomerTypes();
+  }
+
+  getCustomer(id: number) {
+    return this.customerService.findById(id).subscribe((customer) => {
       this.updateForm = new FormGroup({
         id: new FormControl(customer.id, [Validators.required, Validators.pattern('^\\d+$')]),
         code: new FormControl(customer.code, [Validators.required, Validators.pattern('^KH-[0-9]{4}$')]),
-        type: new FormControl(customer.type, [Validators.required]),
+        type: new FormControl(customer.type.id, [Validators.required]),
         name: new FormControl(customer.name, [Validators.required]),
         birthday: new FormControl(customer.birthday, [Validators.required]),
         gender: new FormControl(customer.gender, [Validators.required]),
@@ -35,11 +44,22 @@ export class CustomerEditComponent implements OnInit {
       });
     });
   }
-
   updateCustomer(id: number) {
-    // @ts-ignore
     const customer = this.updateForm.value;
-    this.customerService.updateById(id, customer);
-    this.router.navigateByUrl('customerList');
+    customer.type = {
+      id: customer.type
+    };
+    this.customerService.updateById(id, customer).subscribe(() => {
+      alert('Cập nhật thành công');
+      this.router.navigateByUrl('customers/list');
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  getAllCustomerTypes() {
+    this.customerTypeService.getAll().subscribe((customerTypes) => {
+      this.customerTypes = customerTypes;
+    });
   }
 }

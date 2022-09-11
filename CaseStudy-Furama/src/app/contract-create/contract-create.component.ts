@@ -14,8 +14,8 @@ import {Route, Router} from '@angular/router';
 })
 export class ContractCreateComponent implements OnInit {
   formCreate: FormGroup;
-  customers: ICustomer[] = this.customerService.getAllCustomers();
-  facilities: IFacility[] = this.facilityService.getAllFacilities();
+  customers: ICustomer[];
+  facilities: IFacility[];
   constructor(private customerService: CustomerServiceService, private facilityService: FacilityServiceService,
               private contractService: ContractServiceService, private router: Router) { }
 

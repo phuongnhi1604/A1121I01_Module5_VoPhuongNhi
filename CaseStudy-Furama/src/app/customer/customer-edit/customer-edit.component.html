@@ -7,22 +7,6 @@
       <div class="row d-flex">
         <div class="col-6">
           <div class="form-group">
-            <label>Customer ID</label>
-            <input type="text" class="form-control" formControlName="id" style="background-color: #FEFBE7">
-            <div *ngIf="updateForm.get('id')?.invalid && (updateForm.get('id')?.touched||updateForm.get('id')?.dirty)">
-              <div [hidden]="!updateForm.get('id').errors.required">
-                <small class="form-text" style="color: red; font-style: italic" >
-                  Bạn chưa nhập id.</small>
-              </div>
-            </div>
-            <div *ngIf="updateForm.get('id')?.invalid && (updateForm.get('id')?.touched||updateForm.get('id')?.dirty)">
-              <div [hidden]="!updateForm.get('id').errors.pattern">
-                <small class="form-text" style="color: red; font-style: italic" >
-                  Nhập id phải là kiểu số.</small>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
             <label>Customer Code</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="code">
             <div *ngIf="updateForm.get('code')?.invalid && (updateForm.get('code')?.touched||updateForm.get('code')?.dirty)">
@@ -41,7 +25,8 @@
           <div class="form-group">
             <label>Customer Type</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="type">
-              <option *ngFor="let customerType of customerTypes">{{customerType}}</option>
+              <option selected disabled>Choose Customer Type</option>
+              <option *ngFor="let customerType of customerTypes" [ngValue]="customerType">{{customerType.name}}</option>
             </select>
             <div *ngIf="updateForm.get('type')?.invalid && (updateForm.get('type')?.touched || updateForm.get('type')?.dirty)">
               <small class="form-text" style="color: red; font-style: italic">Bạn chưa chọn loại khách.</small>
@@ -67,15 +52,15 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-6">
-          <div class="form-group d-flex" style="margin-top: 38px">
+          <div class="form-group d-flex">
             <label>Gender: </label>
             <div class="form-check" *ngFor="let gender of genders">
               <label>
                 <input type="radio" [value]="gender" formControlName="gender">{{gender}} </label>
             </div>
           </div>
+        </div>
+        <div class="col-6">
           <div class="form-group">
             <label>ID Card</label>
             <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="idCard">

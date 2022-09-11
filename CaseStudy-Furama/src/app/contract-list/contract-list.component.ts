@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {IContract} from '../model/IContract';
-import {ContractDAO} from '../../data/ContractDAO';
 import {ContractServiceService} from '../service/contract-service.service';
 
 @Component({
@@ -13,7 +12,7 @@ export class ContractListComponent implements OnInit {
   p = 1;
   constructor(private contractService: ContractServiceService) { }
   ngOnInit(): void {
-    this.contractList = this.contractService.getAllContracts();
+    // this.contractList = this.contractService.getAllContracts();
   }
 
 }

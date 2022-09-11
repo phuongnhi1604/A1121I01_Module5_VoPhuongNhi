@@ -1,7 +1,9 @@
+import {ICustomerType} from './ICustomerType';
+
 export interface ICustomer {
   id?: number;
   code?: string;
-  type?: string;
+  type?: ICustomerType;
   name?: string;
   birthday?: string;
   gender?: string;
