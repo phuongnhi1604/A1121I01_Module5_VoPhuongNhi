@@ -20,7 +20,7 @@
       <!--Table head-->
       <!--Table body-->
       <tbody>
-      <tr *ngFor="let contract of contractList | paginate: {itemsPerPage: 1, currentPage: p}">
+      <tr *ngFor="let contract of contractList | paginate: {itemsPerPage: 2, currentPage: p}">
         <th scope="row">{{contract.id}}</th>
         <td>{{contract.startDay | date: 'dd/MM/yyyy'}}</td>
         <td>{{contract.endDay | date: 'dd/MM/yyyy'}}</td>

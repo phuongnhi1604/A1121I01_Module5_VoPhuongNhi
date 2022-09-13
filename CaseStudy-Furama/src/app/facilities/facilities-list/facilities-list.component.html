@@ -5,10 +5,10 @@
   <div>
     <a class="ml-5 btn btn-outline-dark" style="background-color: #DAE5D0" [routerLink]="['/facilities/create']">Create new facility</a>
   </div>
-  <div class="row">
+  <div class="row embed-responsive">
     <div *ngFor="let facility of facilities | paginate: {itemsPerPage: 9, currentPage: p}"
          class="col l-4 m-6 c-12 service__item">
-      <div class="card mt-5 ml-5" style="width: 18rem; height: 25rem; border: none">
+      <div class="card mt-3 ml-5" style="width: 18rem; height: 25rem; border: none">
         <img class="card-img-top" style="height: 190px"
              [src]="facility.image"
              alt="Card image cap">
@@ -19,9 +19,9 @@
             {{facility.cost}}</p>
           <p class="card-text font-weight-bold" style="font-style: oblique">
             {{facility.serviceType.name}}</p>
-          <a type="button" class="btn btn-outline-dark" style="background-color: #DAE5D0" [routerLink]="['/facilities/edit',facility.id]">Edit</a>
-          <a type="button" class="btn btn-outline-dark ml-4" style="background-color: #DAE5D0"
-                  data-toggle="modal" data-target="#exampleModal" [routerLink]="['/facilities/delete',facility.id]">
+          <a type="button" class="btn btn-outline-dark" style="background-color: #DAE5D0; color: #15133C" [routerLink]="['/facilities/edit',facility.id]">Edit</a>
+          <a type="button" class="btn btn-outline-dark ml-4" style=" background-color: #e66557; color: #15133C"
+                  data-toggle="modal" data-target="#exampleModal" (click)="getFacilityDelete(facility)">
             Delete
           </a>
         </div>
@@ -35,4 +35,28 @@
   </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete facility</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete the facility: <span style="color: #4f3fff">{{facilityDelete.name}}</span>?
+      </div>
+      <div class="ml-3">
+        <small style="color: red; font-style: italic">Note: this action will not be undone once done!</small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal" style="background-color: #e66557; color: #15133C" (click)="deleteFacility(facilityDelete.id)">Delete</button>
+        <button type="button" class="btn" style="background-color: #c5dfe8; color: #15133C" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 

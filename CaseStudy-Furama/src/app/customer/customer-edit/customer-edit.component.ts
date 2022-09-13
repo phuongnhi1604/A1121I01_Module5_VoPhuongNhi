@@ -15,6 +15,7 @@ export class CustomerEditComponent implements OnInit {
   updateForm: FormGroup;
   customerTypes: ICustomerType[] = [];
   genders: Array<string> = ['Nam', 'Nữ', 'Khác'];
+  customerEdit: ICustomer = {};
   id: number;
   constructor(private customerService: CustomerServiceService, private activatedRoute: ActivatedRoute, private router: Router,
               private customerTypeService: CustomerTypeService) {
@@ -33,7 +34,7 @@ export class CustomerEditComponent implements OnInit {
       this.updateForm = new FormGroup({
         id: new FormControl(customer.id, [Validators.required, Validators.pattern('^\\d+$')]),
         code: new FormControl(customer.code, [Validators.required, Validators.pattern('^KH[0-9]{4}$')]),
-        type: new FormControl(customer.type.id, [Validators.required]),
+        type: new FormControl(customer.type, [Validators.required]),
         name: new FormControl(customer.name, [Validators.required]),
         birthday: new FormControl(customer.birthday, [Validators.required]),
         gender: new FormControl(customer.gender, [Validators.required]),
@@ -43,6 +44,9 @@ export class CustomerEditComponent implements OnInit {
         address: new FormControl(customer.address, [Validators.required])
       });
     });
+  }
+  compareWith(c1: ICustomerType, c2: ICustomerType): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
   updateCustomer(id: number) {
     const customer = this.updateForm.value;

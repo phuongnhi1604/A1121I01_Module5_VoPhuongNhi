@@ -24,9 +24,8 @@
           </div>
           <div class="form-group">
             <label>Customer Type</label>
-            <select class="custom-select" style="background-color: #FEFBE7" formControlName="type">
-              <option selected disabled>Choose Customer Type</option>
-              <option *ngFor="let customerType of customerTypes" [ngValue]="customerType">{{customerType.name}}</option>
+            <select [compareWith]="compareWith" class="custom-select" style="background-color: #FEFBE7" formControlName="type">
+                <option *ngFor="let customerType of customerTypes" [ngValue]="customerType">{{customerType.name}}</option>
             </select>
             <div *ngIf="updateForm.get('type')?.invalid && (updateForm.get('type')?.touched || updateForm.get('type')?.dirty)">
               <small class="form-text" style="color: red; font-style: italic">Bạn chưa chọn loại khách.</small>

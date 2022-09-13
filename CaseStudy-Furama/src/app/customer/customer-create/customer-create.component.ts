@@ -33,7 +33,6 @@ export class CustomerCreateComponent implements OnInit {
     });
     this.getAllCustomerTypes();
   }
-
   createCustomer() {
     const customer = this.customerCreateForm.value;
     this.customerService.createCustomer(customer).subscribe(() => {

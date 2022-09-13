@@ -79,7 +79,7 @@
             <label>Service</label>
             <select class="custom-select" style="background-color: #FEFBE7" formControlName="facility">
               <option value="" disabled selected>Choose Service ID</option>
-              <option [ngValue]="facility" *ngFor="let facility of facilities">{{facility.id}}</option>
+              <option [ngValue]="facility" *ngFor="let facility of facilities">{{facility.name}}</option>
             </select>
             <div *ngIf="formCreate.get('facility')?.invalid && (formCreate.get('facility')?.touched||formCreate.get('facility')?.dirty)">
               <div [hidden]="!formCreate.get('facility').errors.required">

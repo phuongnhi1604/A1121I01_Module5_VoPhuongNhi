@@ -7,6 +7,8 @@ import {ContractServiceService} from '../../service/contract-service.service';
 import {RentTypeService} from '../../service/rent-type.service';
 import {IRentType} from '../../model/IRentType';
 import {ServiceTypeService} from '../../service/service-type.service';
+import {ICustomerType} from '../../model/ICustomerType';
+import {IServiceType} from '../../model/IServiceType';
 
 @Component({
   selector: 'app-facilities-edit',
@@ -41,7 +43,7 @@ export class FacilitiesEditComponent implements OnInit {
         cost: new FormControl(facility.cost, [Validators.required, Validators.pattern('^\\d+$')]),
         maxPeople: new FormControl(facility.maxPeople, [Validators.required, Validators.pattern('^\\d+$')]),
         rentType: new FormControl(facility.rentType.id, [Validators.required]),
-        serviceType: new FormControl(facility.serviceType.id, [Validators.required]),
+        serviceType: new FormControl(facility.serviceType, [Validators.required]),
         standardRoom: new FormControl(facility.standardRoom, [Validators.required]),
         description: new FormControl(facility.description, [Validators.required]),
         poolArea: new FormControl(facility.poolArea, [Validators.required, Validators.pattern('^\\d+$')]),
@@ -62,7 +64,9 @@ export class FacilitiesEditComponent implements OnInit {
       console.log(error);
     });
   }
-
+  compareWith(c1: IServiceType, c2: IServiceType): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
   resetForm() {
     this.editForm.reset();
   }

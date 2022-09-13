@@ -85,7 +85,7 @@
           </div>
           <div class="form-group">
             <label>Service Type</label>
-            <select class="custom-select" style="background-color: #FEFBE7" formControlName="serviceType">
+            <select [compareWith]="compareWith" class="custom-select" style="background-color: #FEFBE7" formControlName="serviceType">
               <option disabled>Choose Service Type</option>
               <option *ngFor="let typeService of typeServices" [ngValue]="typeService">{{typeService.name}}</option>
             </select>
