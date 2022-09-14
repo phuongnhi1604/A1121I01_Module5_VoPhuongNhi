@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ICustomer} from '../../model/ICustomer';
 import {CustomerServiceService} from '../../service/customer-service.service';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {ICustomerType} from '../../model/ICustomerType';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -12,17 +11,29 @@ import {ICustomerType} from '../../model/ICustomerType';
 export class CustomerListComponent implements OnInit {
   customers: ICustomer[] = [];
   customerDelete: ICustomer = {};
+  customersSearch: ICustomer[] = [];
   p = 1;
-  constructor(private customerService: CustomerServiceService) {
+  term: string;
+  name: string;
+  constructor(private customerService: CustomerServiceService, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
+      this.name = param.get('name');
+      this.search(this.name);
+    });
   }
 
   ngOnInit(): void {
-    this.getAll();
+      this.getAll();
   }
 
   getAll() {
     return this.customerService.getAllCustomers().subscribe((customers) => {
       this.customers = customers;
+    });
+  }
+  search(name: string) {
+    return this.customerService.searchByName(name).subscribe((data) => {
+      this.customersSearch = data;
     });
   }
   getCustomerDelete(customer: ICustomer) {

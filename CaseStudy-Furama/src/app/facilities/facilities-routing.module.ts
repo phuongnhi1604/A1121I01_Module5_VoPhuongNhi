@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {FacilitiesListComponent} from './facilities-list/facilities-list.component';
 import {FacilitiesCreateComponent} from './facilities-create/facilities-create.component';
 import {FacilitiesEditComponent} from './facilities-edit/facilities-edit.component';
+import {FacilitiesDetailComponent} from './facilities-detail/facilities-detail.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: FacilitiesEditComponent
+  },
+  {
+    path: 'detail/:id',
+    component: FacilitiesDetailComponent
   },
 ];
 

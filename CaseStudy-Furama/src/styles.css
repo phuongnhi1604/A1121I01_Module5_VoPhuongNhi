@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
 .background-image {
   background: url("https://mdbootstrap.com/img/Photos/Others/img (51).webp")no-repeat center center;
   background-size: cover;

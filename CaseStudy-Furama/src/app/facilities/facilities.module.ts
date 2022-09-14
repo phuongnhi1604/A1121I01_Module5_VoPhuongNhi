@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { FacilitiesRoutingModule } from './facilities-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import { FacilitiesDetailComponent } from './facilities-detail/facilities-detail.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [FacilitiesDetailComponent],
     imports: [
         CommonModule,
         FacilitiesRoutingModule,

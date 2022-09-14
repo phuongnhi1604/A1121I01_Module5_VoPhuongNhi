@@ -11,7 +11,7 @@ export class FacilitiesListComponent implements OnInit {
   p = 1;
   facilities: IFacility[] = [];
   facilityDelete: IFacility = {};
-
+  term: string;
   constructor(private facilityService: FacilityServiceService) {
   }
 

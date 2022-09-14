@@ -4,28 +4,35 @@
   </div>
   <div>
     <a class="ml-5 btn btn-outline-dark" style="background-color: #DAE5D0" [routerLink]="['/facilities/create']">Create new facility</a>
+    <div class="input-group" style="margin-left: 900px">
+      <div class="input-group-prepend">
+        <div class="input-group-text" id="btnGroupAddon" style="background-color: #DAE5D0">Search</div>
+        <input type="text" class="form-control" [(ngModel)]="term" placeholder="Type text to search">
+      </div>
+    </div>
   </div>
   <div class="row embed-responsive">
-    <div *ngFor="let facility of facilities | paginate: {itemsPerPage: 9, currentPage: p}"
+    <div *ngFor="let facility of facilities | paginate: {itemsPerPage: 9, currentPage: p} | filter:term"
          class="col l-4 m-6 c-12 service__item">
-      <div class="card mt-3 ml-5" style="width: 18rem; height: 25rem; border: none">
-        <img class="card-img-top" style="height: 190px"
-             [src]="facility.image"
-             alt="Card image cap">
-        <div class="card-body bg_card">
-          <h5 class="card-title">{{facility.name | titlecase}}</h5>
-          <p class="card-text"><img
-            src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/20/000000/external-cost-basic-ui-elements-2.2-sbts2018-outline-color-sbts2018.png"/>
-            {{facility.cost}}</p>
-          <p class="card-text font-weight-bold" style="font-style: oblique">
-            {{facility.serviceType.name}}</p>
-          <a type="button" class="btn btn-outline-dark" style="background-color: #DAE5D0; color: #15133C" [routerLink]="['/facilities/edit',facility.id]">Edit</a>
-          <a type="button" class="btn btn-outline-dark ml-4" style=" background-color: #e66557; color: #15133C"
-                  data-toggle="modal" data-target="#exampleModal" (click)="getFacilityDelete(facility)">
-            Delete
-          </a>
+        <div class="card mt-3 ml-5" style="width: 18rem; height: 25rem; border: none">
+          <img class="card-img-top" style="height: 190px"
+               [src]="facility.image"
+               alt="Card image cap">
+          <div class="card-body bg_card">
+            <h5 class="card-title">{{facility.name | titlecase}}</h5>
+            <p class="card-text"><img
+              src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/20/000000/external-cost-basic-ui-elements-2.2-sbts2018-outline-color-sbts2018.png"/>
+              {{facility.cost}}</p>
+            <p class="card-text font-weight-bold" style="font-style: oblique">
+              {{facility.serviceType.name}}</p>
+            <a [routerLink]="['/facilities/detail', facility.id]"  type="button" class="btn btn-outline-dark" style="background-color: #c5dfe8; color: #15133C">Detail</a>
+            <a type="button" class="btn btn-outline-dark  ml-4" style="background-color: #DAE5D0; color: #15133C" [routerLink]="['/facilities/edit',facility.id]">Edit</a>
+            <a type="button" class="btn btn-outline-dark ml-4" style=" background-color: #e66557; color: #15133C"
+               data-toggle="modal" data-target="#exampleModal" (click)="getFacilityDelete(facility)">
+              Delete
+            </a>
+          </div>
         </div>
-      </div>
     </div>
   </div>
   <div class="wide grid pagination__container">

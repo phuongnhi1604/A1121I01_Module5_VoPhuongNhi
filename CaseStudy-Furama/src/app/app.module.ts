@@ -17,6 +17,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {CustomerModule} from './customer/customer.module';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,6 @@ import {CustomerModule} from './customer/customer.module';
     CustomerCreateComponent,
     ContractCreateComponent,
     ContractListComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,8 @@ import {CustomerModule} from './customer/customer.module';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    CustomerModule
+    CustomerModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,24 @@
+<div class="grid wide services__container" style="background-color: white">
+  <div class="row justify-content-center">
+    <h2>Detail facility</h2>
+  </div>
+  <div style="margin-left: 295px">
+    <div class="card" style="width: 37rem;">
+      <img class="card-img-top" [src]="facility.image" alt="Card image cap">
+      <div class="card-body" style="background-color: #FEFBE7">
+        <h5 class="card-title">{{facility.name}}</h5>
+        <p class="card-text"><strong style="color: red">Giá:</strong> {{facility.cost}}</p>
+        <p class="card-text"><strong style="color: blue">Loại dịch vụ:</strong> {{facility.serviceType.name}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><span style="font-style: oblique">Diện tích phòng: {{facility.area}} m<sup>2</sup></span></li>
+        <li class="list-group-item"><span style="font-style: oblique">Số người: {{facility.maxPeople}}</span></li>
+        <li class="list-group-item"><span style="font-style: oblique">Tiêu chuẩn phòng: {{facility.standardRoom}}</span></li>
+        <li class="list-group-item"><span style="font-style: oblique">Mô tả: {{facility.description}}</span></li>
+        <li class="list-group-item"><span style="font-style: oblique">Diện tích hồ bơi: </span>{{facility.poolArea}} m<sup>2</sup></li>
+        <li class="list-group-item"><span style="font-style: oblique">Số tầng: </span>{{facility.numberOfFloor}}</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
