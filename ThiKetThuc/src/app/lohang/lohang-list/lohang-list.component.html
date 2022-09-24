@@ -1,0 +1,109 @@
+<div class="grid wide services__container" style="background-color: white">
+  <div class="row d-flex mb-5">
+    <div class="input-group" style="margin-left: 30px">
+      <div class="input-group-prepend" style="margin-right: 20px">
+        <div class="input-group-text" id="btnGroupAddon" style="background-color: #DAE5D0">Tên sản phẩm</div>
+        <input type="text" class="form-control w-75 " [(ngModel)]="term" placeholder="Nhập tên sản phẩm để tìm kiếm">
+      </div>
+      <div class="input-group-prepend">
+        <div class="input-group-text" style="background-color: #DAE5D0">Ngày hết hạn</div>
+        <input type="date" class="form-control w-75">
+      </div>
+    </div>
+  </div>
+    <div class="row d-flex mb-5">
+      <div class="input-group" style="margin-left: 30px">
+        <div class="input-group-prepend">
+          <div class="input-group-text" style="background-color: #DAE5D0">Ngày nhập hàng</div>
+          <input type="date" class="form-control w-75">
+        </div>
+        <div style="margin-left: 80px">
+          <span> đến </span>
+        </div>
+        <div class="input-group-prepend" style="margin-left: 60px">
+          <input type="date" class="form-control w-100">
+        </div>
+        <div style="margin-left: 10px">
+          <button class="btn btn-outline-dark" style="background-color: #DAE5D0; color: #15133C">Tìm kiếm</button>
+        </div>
+      </div>
+    </div>
+  <div class="row embed-responsive d-flex">
+    <div>
+      <a class="ml-5 btn btn-outline-dark" style="background-color: #DAE5D0" [routerLink]="['/lohang/create']">
+        Nhập hàng</a>
+    </div>
+  </div>
+  <div class="mr-3 ml-3 mt-3">
+    <table class="table table-hover table-responsive">
+      <thead style="background-color: #FEFBE7">
+      <tr>
+        <th width="10%">Mã lô hàng</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá tiền</th>
+        <th>Đơn vị</th>
+        <th>Số lượng</th>
+        <th>Ngày nhập hàng</th>
+        <th>Ngày sản xuất</th>
+        <th>Ngày hết hạn</th>
+        <th width="15%"></th>
+      </tr>
+      </thead>
+      <!--Table head-->
+      <!--Table body-->
+      <tbody>
+      <tr *ngFor="let lohang1 of dsLoHang | paginate: {itemsPerPage: 3, currentPage: p} | filter:term">
+        <th scope="row">{{lohang1.id}}</th>
+        <td>{{lohang1.sanpham.ten}}</td>
+        <td>{{lohang1.sanpham.giaTien}}</td>
+        <td>{{lohang1.sanpham.donVi}}</td>
+        <td>{{lohang1.soLuong}}</td>
+        <td>{{lohang1.ngayNhapHang | date: 'dd/MM/yyyy'}}</td>
+        <td>{{lohang1.ngaySanXuat | date: 'dd/MM/yyyy'}}</td>
+        <td>{{lohang1.ngayHetHan | date: 'dd/MM/yyyy'}}</td>
+        <td>
+          <a type="button" class="mr-2 btn my-2 my-sm-0 btn-outline-dark"
+             style="background-color: #DAE5D0; color: #15133C"> Sửa
+          </a>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn my-2 my-sm-0 btn-outline-dark" data-toggle="modal"
+                  data-target="#exampleModal" style=" background-color: #e66557; color: #15133C"
+                  (click)="delete(lohang1.id)">
+            Xóa
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="wide grid pagination__container">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có chắc muốn xóa thông tin lô hàng <span style="color: #4f3fff"></span>?
+      </div>
+      <div class="ml-3">
+        <small style="color: red; font-style: italic">Chú ý: Thao tác này sau khi thực hiện sẽ không được hoàn
+          tác!</small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+        <button type="button" class="btn btn-primary">Có</button>
+      </div>
+    </div>
+  </div>
+</div>
+

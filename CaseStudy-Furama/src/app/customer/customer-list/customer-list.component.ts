@@ -14,12 +14,11 @@ export class CustomerListComponent implements OnInit {
   customersSearch: ICustomer[] = [];
   p = 1;
   term: string;
-  name: string;
   constructor(private customerService: CustomerServiceService, private activatedRoute: ActivatedRoute) {
-    this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
-      this.name = param.get('name');
-      this.search(this.name);
-    });
+    // this.activatedRoute.paramMap.subscribe((param: ParamMap) => {
+    //   this.name = param.get('name');
+    //   this.search(this.name);
+    // });
   }
 
   ngOnInit(): void {
@@ -31,11 +30,11 @@ export class CustomerListComponent implements OnInit {
       this.customers = customers;
     });
   }
-  search(name: string) {
-    return this.customerService.searchByName(name).subscribe((data) => {
-      this.customersSearch = data;
-    });
-  }
+  // search(name: string) {
+  //   return this.customerService.searchByName(name).subscribe((data) => {
+  //     this.customersSearch = data;
+  //   });
+  // }
   getCustomerDelete(customer: ICustomer) {
     this.customerDelete = customer;
   }

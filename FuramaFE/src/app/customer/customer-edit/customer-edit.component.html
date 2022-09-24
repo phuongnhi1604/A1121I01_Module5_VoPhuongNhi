@@ -1,0 +1,136 @@
+<div class="grid wide services__container mt-4" style="background-color: white">
+  <div class="row justify-content-center">
+    <h2>Update customer</h2>
+  </div>
+  <div>
+    <form style=" width: 1000px; margin-left: 100px" [formGroup]="updateForm" (ngSubmit)="updateCustomer(id)">
+      <div class="row d-flex">
+        <div class="col-6">
+          <div class="form-group">
+            <label>Customer Code</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="customer_code">
+            <div *ngIf="updateForm.get('customer_code')?.invalid && (updateForm.get('customer_code')?.touched||updateForm.get('customer_code')?.dirty)">
+              <div [hidden]="!updateForm.get('customer_code').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập mã khách.</small>
+              </div>
+            </div>
+            <div *ngIf="updateForm.get('customer_code')?.invalid && (updateForm.get('customer_code')?.touched||updateForm.get('customer_code')?.dirty)">
+              <div [hidden]="!updateForm.get('customer_code').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập mã khách theo định dạng KHXXXX.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Customer Type</label>
+            <select [compareWith]="compareWith" class="custom-select" style="background-color: #FEFBE7" formControlName="customerType">
+              <option *ngFor="let customerType of customerTypes" [ngValue]="customerType">{{customerType.customer_type_name}}</option>
+            </select>
+            <div *ngIf="updateForm.get('customerType')?.invalid && (updateForm.get('customerType')?.touched || updateForm.get('customerType')?.dirty)">
+              <small class="form-text" style="color: red; font-style: italic">Bạn chưa chọn loại khách.</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Customer Name</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="customer_name">
+            <div *ngIf="updateForm.get('customer_name')?.invalid && (updateForm.get('customer_name')?.touched||updateForm.get('customer_name')?.dirty)">
+              <div [hidden]="!updateForm.get('customer_name').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập tên.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Birthday</label>
+            <input type="date" class="form-control" style="background-color: #FEFBE7" formControlName="customer_birthday">
+            <div *ngIf="updateForm.get('customer_birthday')?.invalid && (updateForm.get('customer_birthday')?.touched||updateForm.get('customer_birthday')?.dirty)">
+              <div [hidden]="!updateForm.get('customer_birthday').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn ngày sinh.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Gender: </label>
+            <select class="custom-select" style="background-color: #FEFBE7" formControlName="customer_gender">
+              <option value="" disabled selected>Choose Gender</option>
+              <option value="true">Nam</option>
+              <option value="false">Nữ</option>
+            </select>
+            <div *ngIf="updateForm.get('customer_gender')?.invalid && (updateForm.get('customer_gender')?.touched || updateForm.get('customer_gender')?.dirty)">
+              <small class="form-text" style="color: red; font-style: italic">Bạn chưa chọn giới tính.</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label>ID Card</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="customer_id_card">
+            <div *ngIf="updateForm.get('customer_id_card')?.invalid && (updateForm.get('customer_id_card')?.touched||updateForm.get('customer_id_card')?.dirty)">
+              <div [hidden]="!updateForm.get('customer_id_card').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập CMND.</small>
+              </div>
+            </div>
+            <div *ngIf="updateForm.get('customer_id_card')?.invalid && (updateForm.get('customer_id_card')?.touched||updateForm.get('customer_id_card')?.dirty)">
+              <div [hidden]="!updateForm.get('customer_id_card').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập CMND chưa đúng định dạng.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="customer_phone">
+            <div *ngIf="updateForm.get('customer_phone')?.invalid && (updateForm.get('customer_phone')?.touched||updateForm.get('customer_phone')?.dirty)">
+              <div [hidden]="!updateForm.get('customer_phone').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập số điện thoại.</small>
+              </div>
+            </div>
+            <div *ngIf="updateForm.get('customer_phone')?.invalid && (updateForm.get('customer_phone')?.touched||updateForm.get('customer_phone')?.dirty)">
+              <div [hidden]="!updateForm.get('customer_phone').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập số điện thoại chưa đúng định dạng.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="customer_email">
+            <div *ngIf="updateForm.get('customer_email')?.invalid && (updateForm.get('customer_email')?.touched||updateForm.get('customer_email')?.dirty)">
+              <div [hidden]="!updateForm.get('customer_email').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập email.</small>
+              </div>
+            </div>
+            <div *ngIf="updateForm.get('customer_email')?.invalid && (updateForm.get('customer_email')?.touched||updateForm.get('customer_email')?.dirty)">
+              <div [hidden]="!updateForm.get('customer_email').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập email chưa đúng định dạng.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" formControlName="customer_address">
+            <div *ngIf="updateForm.get('customer_address')?.invalid && (updateForm.get('customer_address')?.touched||updateForm.get('customer_address')?.dirty)">
+              <div [hidden]="!updateForm.get('customer_address').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập địa chỉ.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wide grid button__container">
+        <button type="submit" class="btn btn-outline-dark mb-4" style="background-color: #DAE5D0">Save
+        </button>
+        <button type="button" class="btn btn-outline-dark ml-4 mb-4" style="background-color: #DAE5D0" (click)="backToList()">Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

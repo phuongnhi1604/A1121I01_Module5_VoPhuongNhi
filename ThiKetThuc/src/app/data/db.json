@@ -1,0 +1,101 @@
+{
+  "sanpham": [
+    {
+      "id": 1,
+      "ten": "Sting",
+      "xuatXu": "Mỹ",
+      "giaTien": 250,
+      "donVi": "Thùng"
+    },
+    {
+      "id": 2,
+      "ten": "Tiger",
+      "xuatXu": "Đức",
+      "giaTien": 220,
+      "donVi": "Thùng"
+    },
+    {
+      "id": 3,
+      "ten": "Oshi",
+      "xuatXu": "Nhật",
+      "giaTien": 100,
+      "donVi": "Thùng"
+    },
+    {
+      "id": 4,
+      "ten": "Dầu gội",
+      "xuatXu": "Việt Nam",
+      "giaTien": 300,
+      "donVi": "Thùng"
+    },
+    {
+      "id": 5,
+      "ten": "Larue",
+      "xuatXu": "Đà Nẵng",
+      "giaTien": 210,
+      "donVi": "Thùng"
+    }
+  ],
+  "lohang": [
+    {
+      "ma": "LH-0001",
+      "sanpham": {
+        "id": 1,
+        "ten": "Sting",
+        "xuatXu": "Mỹ",
+        "giaTien": 250,
+        "donVi": "Thùng"
+      },
+      "soLuong": "5",
+      "ngayNhapHang": "2020-12-28",
+      "ngaySanXuat": "2020-09-10",
+      "ngayHetHan": "2021-09-10",
+      "id": 1
+    },
+    {
+      "ma": "LH-0002",
+      "sanpham": {
+        "id": 2,
+        "ten": "Tiger",
+        "xuatXu": "Đức",
+        "giaTien": 220,
+        "donVi": "Thùng"
+      },
+      "soLuong": "5",
+      "ngayNhapHang": "2020-01-11",
+      "ngaySanXuat": "2022-10-15",
+      "ngayHetHan": "2021-10-15",
+      "id": 2
+    },
+    {
+      "ma": "LH-1242",
+      "sanpham": {
+        "id": 4,
+        "ten": "Dầu gội",
+        "xuatXu": "Việt Nam",
+        "giaTien": 300,
+        "donVi": "Thùng"
+      },
+      "soLuong": "3",
+      "ngayNhapHang": "2022-09-21",
+      "ngaySanXuat": "2022-09-14",
+      "ngayHetHan": "2022-09-19",
+      "id": 6
+    },
+    {
+      "ma": "LH-2422",
+      "sanpham": {
+        "id": 1,
+        "ten": "Sting",
+        "xuatXu": "Mỹ",
+        "giaTien": 250,
+        "donVi": "Thùng"
+      },
+      "soLuong": "3",
+      "ngayNhapHang": "2022-09-12",
+      "ngaySanXuat": "2022-09-13",
+      "ngayHetHan": "2022-09-28",
+      "id": 7
+    }
+  ]
+}

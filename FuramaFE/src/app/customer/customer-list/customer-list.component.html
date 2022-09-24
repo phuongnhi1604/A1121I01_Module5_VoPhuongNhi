@@ -1,0 +1,140 @@
+<!--suppress TypeScriptUnresolvedVariable -->
+<div class="grid wide services__container" style="background-color: white">
+  <div class="row justify-content-center">
+    <h2>Customer List</h2>
+  </div>
+  <div class="row embed-responsive d-flex">
+    <div>
+      <a class="ml-5 btn btn-outline-dark" style="background-color: #DAE5D0" [routerLink]="['/customers/create']">Create
+        new customer</a>
+    </div>
+
+    <form [formGroup]="searchCustomerForm" (ngSubmit)="searchCustomer()">
+      <div class="row d-flex flex-wrap" style="margin-left: 350px;">
+        <div class="form-group mr-3">
+          <input id="customerName" style="background-color: #FEFBE7" class="form-control" type="text"
+                 placeholder="Enter name to search" formControlName="customer_name">
+        </div>
+        <div class="form-group">
+          <select class="custom-select" style="background-color: #FEFBE7" id="customerType"
+                  formControlName="customerType">
+            <option value="" disabled selected>Choose Customer Type</option>
+            <option [ngValue]="type.customer_type_id"
+                    *ngFor="let type of customerTypes">{{type.customer_type_name}}</option>
+          </select>
+        </div>
+        <div>
+          <button class="ml-3 btn btn-outline-dark" style="background-color: #DAE5D0">Tìm kiếm</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="mr-3 ml-3 mt-3">
+    <table class="table table-hover table-responsive">
+      <thead style="background-color: #FEFBE7">
+      <tr>
+        <th>STT</th>
+        <th>Code</th>
+        <th>Type</th>
+        <th width="25%">Name</th>
+        <th>Address</th>
+        <th width="25%">Action</th>
+      </tr>
+      </thead>
+      <!--Table head-->
+      <!--Table body-->
+      <tbody>
+      <tr *ngFor="let customer of customers, index as i">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{customer.customer_code}}</td>
+        <td>{{customer.customerType.customer_type_name}}</td>
+        <td>{{customer.customer_name | titlecase}}</td>
+        <!--        <td>{{customer.birthday | date: 'dd/MM/yyyy'}}</td>-->
+        <!--        <td>{{customer.gender}}</td>-->
+        <!--        <td>{{customer.idCard}}</td>-->
+        <!--        <td>{{customer.phone}}</td>-->
+        <!--        <td>{{customer.email}}</td>-->
+        <td>{{customer.customer_address | titlecase}}</td>
+        <td>
+          <a type="button" class="btn my-2 my-sm-0 btn-outline-dark mr-3"
+             style="background-color: #c5dfe8; color: #15133C"
+             [routerLink]="['/customers/detail',customer.customer_id]">
+            Detail
+          </a>
+          <a type="button" class="mr-3 btn my-2 my-sm-0 btn-outline-dark"
+             style="background-color: #DAE5D0; color: #15133C" [routerLink]="['/customers/edit',customer.customer_id]">
+            Edit
+          </a>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn my-2 my-sm-0 btn-outline-dark"
+                  style=" background-color: #e66557; color: #15133C"
+                  data-toggle="modal" data-target="#exampleModal" (click)="getCustomerDelete(customer)">
+            Delete
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!--Pagination-->
+  <div class="mt-3" style="margin-right: 130px">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination d-flex justify-content-center">
+        <!--        <li class="page-item"><a class="page-link" (click)="firstPage()"><<</a></li>-->
+        <li class="page-item"><a class="page-link" (click)="previousPage()"
+                                 style="background-color: #DAE5D0; color: #15133C">Previous</a></li>
+        <li class="page-item">
+          <div class="input-group d-flex">
+            <input type="number" min="1" [max]="totalPagination" class="form-control"
+                   placeholder="2" aria-label="Username"
+                   aria-describedby="basic-addon1" [value]="indexPagination"
+                   (change)="indexPaginationChange($event.target.value)">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">{{totalPagination}}</span>
+            </div>
+          </div>
+        </li>
+        <!--        <li class="page-item">-->
+        <!--          <button class="btn btn-primary rounded-0" (click)="findPagination()">Đi</button>-->
+        <!--        </li>-->
+        <li class="page-item"><a class="page-link" (click)="nextPage()"
+                                 style="background-color: #DAE5D0; color: #15133C">Next</a></li>
+        <!--        <li class="page-item"><a class="page-link" (click)="lastPage()">>></a></li>-->
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete the customer: <span style="color: #4f3fff">{{customerDelete.customer_name}}</span>?
+      </div>
+      <div class="ml-3">
+        <small style="color: red; font-style: italic">Note: This action will not be undone once done!</small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" style="background-color: #e66557; color: #15133C"
+                data-dismiss="modal" (click)="deleteCustomer(customerDelete.customer_id)">Delete
+        </button>
+        <button type="button" class="btn btn-outline-dark" style="background-color: #c5dfe8; color: #15133C"
+                data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

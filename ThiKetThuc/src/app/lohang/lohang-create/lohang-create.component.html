@@ -1,0 +1,102 @@
+<div class="grid wide services__container mt-4" style="background-color: white">
+  <div class="row justify-content-center">
+    <h2>Nhập hàng</h2>
+  </div>
+  <div>
+    <form style=" width: 1000px; margin-left: 100px" [formGroup]="createForm" (ngSubmit)="create()">
+      <div class="row d-flex">
+        <div class="col-12">
+          <div class="form-group">
+            <label>Mã lô hàng: </label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" placeholder="Nhập mã lô hàng"
+                   formControlName="ma">
+            <div *ngIf="createForm.get('ma')?.invalid && (createForm.get('ma')?.touched||createForm.get('ma')?.dirty)">
+              <div [hidden]="!createForm.get('ma').errors.required">
+                <small class="form-text" style="color: red; font-style: italic">
+                  Bạn chưa nhập mã lô hàng.</small>
+              </div>
+            </div>
+            <div *ngIf="createForm.get('ma')?.invalid && (createForm.get('ma')?.touched||createForm.get('ma')?.dirty)">
+              <div [hidden]="!createForm.get('ma').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic">
+                  Nhập mã lô hàng theo định dạng LH-XXXX.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Sản phẩm</label>
+            <select class="custom-select" style="background-color: #FEFBE7" formControlName="sanpham">
+              <option value="" disabled selected>Chọn</option>
+              <option [ngValue]="sanpham" *ngFor="let sanpham of dsSanPham">{{sanpham.ten}}</option>
+            </select>
+            <div
+              *ngIf="createForm.get('sanpham')?.invalid && (createForm.get('sanpham')?.touched || createForm.get('sanpham')?.dirty)">
+              <small class="form-text" style="color: red; font-style: italic">Bạn chưa chọn sản phẩm.</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Số lượng: </label>
+            <input type="text" class="form-control" style="background-color: #FEFBE7" placeholder="Nhập số lượng"
+                   formControlName="soLuong">
+            <div
+              *ngIf="createForm.get('soLuong')?.invalid && (createForm.get('soLuong')?.touched||createForm.get('soLuong')?.dirty)">
+              <div [hidden]="!createForm.get('soLuong').errors.required">
+                <small class="form-text" style="color: red; font-style: italic">
+                  Bạn chưa nhập số lượng.</small>
+              </div>
+            </div>
+            <div
+              *ngIf="createForm.get('soLuong')?.invalid && (createForm.get('soLuong')?.touched||createForm.get('soLuong')?.dirty)">
+              <div [hidden]="!createForm.get('soLuong').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic">
+                  Nhập số lượng không phải số nguyên dương.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Ngày nhập hàng: </label>
+            <input type="date" class="form-control" style="background-color: #FEFBE7" formControlName="ngayNhapHang">
+            <div
+              *ngIf="createForm.get('ngayNhapHang')?.invalid && (createForm.get('ngayNhapHang')?.touched||createForm.get('ngayNhapHang')?.dirty)">
+              <div [hidden]="!createForm.get('ngayNhapHang').errors.required">
+                <small class="form-text" style="color: red; font-style: italic">
+                  Bạn chưa chọn ngày nhập hàng.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Ngày sản xuất: </label>
+            <input type="date" class="form-control" style="background-color: #FEFBE7" formControlName="ngaySanXuat">
+            <div
+              *ngIf="createForm.get('ngaySanXuat')?.invalid && (createForm.get('ngaySanXuat')?.touched||createForm.get('ngaySanXuat')?.dirty)">
+              <div [hidden]="!createForm.get('ngaySanXuat').errors.required">
+                <small class="form-text" style="color: red; font-style: italic">
+                  Bạn chưa chọn ngày sản xuất.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Ngày hết hạn: </label>
+            <input type="date" class="form-control" style="background-color: #FEFBE7" formControlName="ngayHetHan">
+            <div
+              *ngIf="createForm.get('ngayHetHan')?.invalid && (createForm.get('ngayHetHan')?.touched||createForm.get('ngayHetHan')?.dirty)">
+              <div [hidden]="!createForm.get('ngayHetHan').errors.required">
+                <small class="form-text" style="color: red; font-style: italic">
+                  Bạn chưa chọn ngày hết hạn.</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="wide grid button__container">
+          <button type="submit" class="btn btn-outline-dark mb-4" style="background-color: #DAE5D0"
+                  [disabled]="!createForm.valid">Nhập hàng
+          </button>
+          <a type="submit" class="btn btn-outline-dark ml-4 mb-4" style="background-color: #DAE5D0" routerLink="/lohang/list">Quay lại
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

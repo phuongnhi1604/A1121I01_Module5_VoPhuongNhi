@@ -12,13 +12,13 @@ export class CustomerServiceService {
   constructor(private http: HttpClient) { }
 
   getAllCustomers(): Observable<ICustomer[]> {
-    return this.http.get<ICustomer[]>(API_URL + '/customers');
+    return this.http.get<ICustomer[]>(API_URL + '/api/customers');
   }
-  searchByName(name: string): Observable<ICustomer[]> {
-    return this.http.get<ICustomer[]>(`${API_URL}/customers/?filter[where][name]=${name}`);
-  }
+  // searchByName(name: string): Observable<ICustomer[]> {
+  //   return this.http.get<ICustomer[]>(`${API_URL}/customers/?filter[where][name]=${name}`);
+  // }
   createCustomer(customer): Observable<ICustomer> {
-    return this.http.post<ICustomer>(API_URL + '/customers', customer);
+    return this.http.post<ICustomer>(API_URL + '/api/customers/create', customer);
   }
 
   findById(id: number): Observable<ICustomer> {
