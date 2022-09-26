@@ -32,6 +32,16 @@ public class ServiceDto {
     private int number_of_floors;
     private List<Contract> contractList= new ArrayList<>();
 
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public ServiceDto() {
     }
 

@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://localhost:8080',
+  firebaseConfig: {
+    apiKey: 'AIzaSyAFLkmyCl-Oj4iODB7k2EcFgjcedqcmJ7s',
+    authDomain: 'furama-image.firebaseapp.com',
+    projectId: 'furama-image',
+    storageBucket: 'furama-image.appspot.com',
+    messagingSenderId: '382493878777',
+    appId: '1:382493878777:web:30836c38b2de84385ef528',
+    measurementId: 'G-VNWN0YB2CL'
+  }
 };
 
 /*

@@ -29,6 +29,15 @@ public class Service {
     private String description_other_convenience;
     private double pool_area;
     private int number_of_floors;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     @OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
     @JsonBackReference

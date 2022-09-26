@@ -13,6 +13,6 @@ import java.util.List;
 public interface ServiceRepository extends JpaRepository<Service, Integer> {
     @Query(value = "select * from service where service_name like concat('%',:name,'%') and rent_type_id like concat('%',:rentType,'%') and service_type_id like concat('%',:serviceType,'%')", nativeQuery = true)
     List<Service> search(@RequestParam("name") String name, @RequestParam("rentType") String rentType, @RequestParam("serviceType") String serviceType);
-    @Query(value = "select * from service as s join rent_type as rent on s.rent_type_id = rent.rent_type_id join service_type as st on s.service_type_id = st.service_type_id group by s.service_id limit ?1,5;", nativeQuery = true)
+    @Query(value = "select * from service as s join rent_type as rent on s.rent_type_id = rent.rent_type_id join service_type as st on s.service_type_id = st.service_type_id group by s.service_id limit ?1,9;", nativeQuery = true)
     List<Service> findAllPageable(int index);
 }

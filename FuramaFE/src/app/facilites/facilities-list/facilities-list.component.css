@@ -1,0 +1,42 @@
+#Body__card {
+  margin-top: 50px;
+  padding: 0 100px;
+
+}
+
+
+.btn__card {
+  margin: 20px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+td {
+  width: 400px;
+}
+
+/*  */
+.services__container {
+  margin-top: 40px
+}
+
+.service__item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.pagination__container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

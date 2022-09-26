@@ -21,7 +21,6 @@ public class Contract {
     @JoinColumn(name = "service_id", referencedColumnName = "service_id")
     private Service service;
 
-
     public Contract() {
     }
 

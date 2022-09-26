@@ -1,0 +1,102 @@
+<div class="grid wide services__container mt-4" style="background-color: white">
+  <div class="row justify-content-center">
+    <h2>Create Contract</h2>
+  </div>
+  <div>
+    <form method="post" style="width: 1000px; margin-left: 100px" [formGroup]="formCreate" (ngSubmit)="createContract()">
+      <div class="row d-flex">
+        <div class="col-6">
+          <div class="form-group">
+            <label>Start Date</label>
+            <input type="date" style="background-color: #FEFBE7" formControlName="contract_start_date" class="form-control">
+            <div *ngIf="formCreate.get('contract_start_date')?.invalid && (formCreate.get('contract_start_date')?.touched||formCreate.get('contract_start_date')?.dirty)">
+              <div [hidden]="!formCreate.get('contract_start_date').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn ngày bắt đầu.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>End Date</label>
+            <input type="date" style="background-color: #FEFBE7" formControlName="contract_end_date" class="form-control">
+            <div *ngIf="formCreate.get('contract_end_date')?.invalid && (formCreate.get('contract_end_date')?.touched||formCreate.get('contract_end_date')?.dirty)">
+              <div [hidden]="!formCreate.get('contract_end_date').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn ngày kết thúc.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Deposit</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control"
+                   placeholder="Enter deposit" formControlName="contract_deposit">
+            <div *ngIf="formCreate.get('contract_deposit')?.invalid && (formCreate.get('contract_deposit')?.touched||formCreate.get('contract_deposit')?.dirty)">
+              <div [hidden]="!formCreate.get('contract_deposit').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập tiền cọc.</small>
+              </div>
+            </div>
+            <div *ngIf="formCreate.get('contract_deposit')?.invalid && (formCreate.get('contract_deposit')?.touched||formCreate.get('contract_deposit')?.dirty)">
+              <div [hidden]="!formCreate.get('contract_deposit').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập tiền cọc phải là kiểu số.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label>Total money</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control"
+                   placeholder="Enter total money" formControlName="contract_total_money">
+            <div *ngIf="formCreate.get('contract_total_money')?.invalid && (formCreate.get('contract_total_money')?.touched||formCreate.get('contract_total_money')?.dirty)">
+              <div [hidden]="!formCreate.get('contract_total_money').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập tổng tiền.</small>
+              </div>
+            </div>
+            <div *ngIf="formCreate.get('contract_total_money')?.invalid && (formCreate.get('contract_total_money')?.touched||formCreate.get('contract_total_money')?.dirty)">
+              <div [hidden]="!formCreate.get('contract_total_money').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập tổng tiền phải là kiểu số.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Customer</label>
+            <select class="custom-select" style="background-color: #FEFBE7" formControlName="customer">
+              <option value="" disabled selected>Choose Customer Code</option>
+              <option [ngValue]="customer" *ngFor="let customer of customers">{{customer.customer_code}}</option>
+            </select>
+            <div *ngIf="formCreate.get('customer')?.invalid && (formCreate.get('customer')?.touched||formCreate.get('customer')?.dirty)">
+              <div [hidden]="!formCreate.get('customer').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn khách hàng.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Service</label>
+            <select class="custom-select" style="background-color: #FEFBE7" formControlName="service">
+              <option value="" disabled selected>Choose Service ID</option>
+              <option [ngValue]="facility" *ngFor="let facility of facilities">{{facility.service_id}}</option>
+            </select>
+            <div *ngIf="formCreate.get('service')?.invalid && (formCreate.get('service')?.touched||formCreate.get('service')?.dirty)">
+              <div [hidden]="!formCreate.get('service').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn dịch vụ.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wide grid button__container">
+        <button type="submit" class="btn btn-outline-dark mb-4" style="background-color: #DAE5D0" [disabled]="!formCreate.valid">Save
+        </button>
+        <button type="submit" class="btn btn-outline-dark ml-4 mb-4" style="background-color: #DAE5D0" (click)="backToList()">Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

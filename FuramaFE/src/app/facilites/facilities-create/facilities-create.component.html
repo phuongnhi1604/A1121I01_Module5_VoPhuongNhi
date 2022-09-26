@@ -1,0 +1,173 @@
+<div class="grid wide services__container mt-4" style="background-color: white">
+  <div class="row justify-content-center">
+    <h2>Create Facility</h2>
+  </div>
+  <div class="row embed-responsive">
+    <form method="post" style="width: 1000px; margin-left: 100px" [formGroup]="formCreate" (ngSubmit)="createFacility()">
+      <div class="row d-flex">
+        <div class="col-6">
+          <div class="form-group">
+            <label>Service Name</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="service_name" placeholder="Enter service name">
+            <div *ngIf="formCreate.get('service_name')?.invalid && (formCreate.get('service_name')?.touched||formCreate.get('service_name')?.dirty)">
+              <div [hidden]="!formCreate.get('service_name').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập tên dịch vụ.</small>
+              </div>
+            </div>
+            <div *ngIf="formCreate.get('service_name')?.invalid && (formCreate.get('service_name')?.touched||formCreate.get('service_name')?.dirty)">
+              <div [hidden]="!formCreate.get('service_name').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Tên dịch vụ không được chứa số hoặc kí tự đặc biệt.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Area</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="service_area" placeholder="Enter service area">
+            <div *ngIf="formCreate.get('service_area')?.invalid && (formCreate.get('service_area')?.touched||formCreate.get('service_area')?.dirty)">
+              <div [hidden]="!formCreate.get('service_area').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập diện tích.</small>
+              </div>
+            </div>
+            <div *ngIf="formCreate.get('service_area')?.invalid && (formCreate.get('service_area')?.touched||formCreate.get('service_area')?.dirty)">
+              <div [hidden]="!formCreate.get('service_area').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập diện tích phải là kiểu số.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Cost</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="service_cost" placeholder="Enter cost">
+            <div *ngIf="formCreate.get('service_cost')?.invalid && (formCreate.get('service_cost')?.touched||formCreate.get('service_cost')?.dirty)">
+              <div [hidden]="!formCreate.get('service_cost').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập giá tiền.</small>
+              </div>
+            </div>
+            <div *ngIf="formCreate.get('service_cost')?.invalid && (formCreate.get('service_cost')?.touched||formCreate.get('service_cost')?.dirty)">
+              <div [hidden]="!formCreate.get('service_cost').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập giá tiền phải là kiểu số.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Max People</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="service_max_people" placeholder="Enter max people">
+            <div *ngIf="formCreate.get('service_max_people')?.invalid && (formCreate.get('service_max_people')?.touched||formCreate.get('service_max_people')?.dirty)">
+              <div [hidden]="!formCreate.get('service_max_people').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập số người.</small>
+              </div>
+            </div>
+            <div *ngIf="formCreate.get('service_max_people')?.invalid && (formCreate.get('service_max_people')?.touched||formCreate.get('service_max_people')?.dirty)">
+              <div [hidden]="!formCreate.get('service_max_people').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập số người phải là kiểu số.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Rent Type</label>
+            <select class="custom-select" style="background-color: #FEFBE7" formControlName="rentType">
+              <option value="" disabled selected>Choose Rent Type</option>
+              <option [ngValue]="rentType" *ngFor="let rentType of rentTypes">{{rentType.rent_type_name}}</option>
+            </select>
+            <div *ngIf="formCreate.get('rentType')?.invalid && (formCreate.get('rentType')?.touched||formCreate.get('rentType')?.dirty)">
+              <div [hidden]="!formCreate.get('rentType').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn kiểu thuê.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Service Type</label>
+            <select class="custom-select" style="background-color: #FEFBE7" formControlName="serviceType">
+              <option value="" disabled selected>Choose Service Type</option>
+              <option [ngValue]="svType" *ngFor="let svType of serviceTypes">{{svType.service_type_name}}</option>
+            </select>
+            <div *ngIf="formCreate.get('serviceType')?.invalid && (formCreate.get('serviceType')?.touched||formCreate.get('serviceType')?.dirty)">
+              <div [hidden]="!formCreate.get('serviceType').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa chọn kiểu dịch vụ.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label>Standard Room</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="standard_room" placeholder="Enter Standard Room">
+            <div *ngIf="formCreate.get('standard_room')?.invalid && (formCreate.get('standard_room')?.touched||formCreate.get('standard_room')?.dirty)">
+              <div [hidden]="!formCreate.get('standard_room').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập tiêu chuẩn phòng.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Description Other</label>
+            <input type="text" style="background-color: #FEFBE7" formControlName="description_other_convenience" class="form-control" placeholder="Enter description">
+            <div *ngIf="formCreate.get('description_other_convenience')?.invalid && (formCreate.get('description_other_convenience')?.touched||formCreate.get('description_other_convenience')?.dirty)">
+              <div [hidden]="!formCreate.get('description_other_convenience').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập miêu tả.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Pool Area</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="pool_area" placeholder="Enter Pool area">
+            <div *ngIf="formCreate.get('pool_area')?.invalid && (formCreate.get('pool_area')?.touched||formCreate.get('pool_area')?.dirty)">
+              <div [hidden]="!formCreate.get('pool_area').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập diện tích hồ bơi.</small>
+              </div>
+            </div>
+            <div *ngIf="formCreate.get('pool_area')?.invalid && (formCreate.get('pool_area')?.touched||formCreate.get('pool_area')?.dirty)">
+              <div [hidden]="!formCreate.get('pool_area').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập diện tích hồ bơi phải là kiểu số.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Number of Floors</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="number_of_floors" placeholder="Enter Number of floors">
+            <div *ngIf="formCreate.get('number_of_floors')?.invalid && (formCreate.get('number_of_floors')?.touched||formCreate.get('number_of_floors')?.dirty)">
+              <div [hidden]="!formCreate.get('number_of_floors').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập số tầng.</small>
+              </div>
+            </div>
+            <div *ngIf="formCreate.get('number_of_floors')?.invalid && (formCreate.get('number_of_floors')?.touched||formCreate.get('number_of_floors')?.dirty)">
+              <div [hidden]="!formCreate.get('number_of_floors').errors.pattern">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Nhập diện tích số tầng phải là kiểu số.</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Image</label>
+            <input type="text" style="background-color: #FEFBE7" class="form-control" formControlName="image" placeholder="Enter Image">
+            <div *ngIf="formCreate.get('image')?.invalid && (formCreate.get('image')?.touched||formCreate.get('image')?.dirty)">
+              <div [hidden]="!formCreate.get('image').errors.required">
+                <small class="form-text" style="color: red; font-style: italic" >
+                  Bạn chưa nhập hình ảnh.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wide grid button__container">
+        <button type="submit" class="btn btn-outline-dark mb-4" style="background-color: #DAE5D0" [disabled]="!formCreate.valid">Save
+        </button>
+        <button type="submit" class="btn btn-outline-dark ml-4 mb-4" style="background-color: #DAE5D0" (click)="backToList()">Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

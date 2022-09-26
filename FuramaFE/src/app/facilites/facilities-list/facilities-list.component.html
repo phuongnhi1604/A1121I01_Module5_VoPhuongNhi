@@ -1,0 +1,118 @@
+<div class="grid wide services__container" style="background-color: white">
+  <div class="row justify-content-center mb-4">
+    <h2>Facilities List</h2>
+  </div>
+  <div class="row embed-responsive d-flex">
+    <div>
+      <a class="ml-5 btn btn-outline-dark" style="background-color: #DAE5D0" [routerLink]="['/facilities/create']">Create
+        new facility</a>
+    </div>
+    <form [formGroup]="searchFacilitiesForm" (ngSubmit)="searchFacility()">
+      <div class="row d-flex flex-wrap" style="margin-left: 240px;">
+        <div class="form-group mr-3">
+          <input id="serviceName" style="background-color: #FEFBE7" class="form-control" type="text"
+                 placeholder="Enter service name" formControlName="service_name">
+        </div>
+        <div class="form-group">
+          <select class="custom-select" style="background-color: #FEFBE7" id="rentType"
+                  formControlName="rentType">
+            <option value="" selected>Choose Rent Type</option>
+            <option [ngValue]="rType.rent_type_id"
+                    *ngFor="let rType of rentTypes">{{rType.rent_type_name}}</option>
+          </select>
+        </div>
+        <div class="form-group ml-3">
+          <select class="custom-select" style="background-color: #FEFBE7" id="serviceType"
+                  formControlName="serviceType">
+            <option value="" selected>Choose Service Type</option>
+            <option [ngValue]="sType.service_type_id"
+                    *ngFor="let sType of serviceTypes">{{sType.service_type_name}}</option>
+          </select>
+        </div>
+        <div>
+          <button class="ml-3 btn btn-outline-dark" style="background-color: #DAE5D0">Tìm kiếm</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="row embed-responsive">
+    <div *ngFor="let facility of facilities"
+         class="col l-4 m-6 c-12 service__item">
+      <div class="card mt-3 ml-5" style="width: 18rem; height: 25rem; border: none">
+        <img class="card-img-top" style="height: 190px"
+             [src]="facility.image"
+             alt="Card image cap">
+        <div class="card-body bg_card">
+          <h5 class="card-title">{{facility.service_name | titlecase}}</h5>
+          <p class="card-text"><img
+            src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/20/000000/external-cost-basic-ui-elements-2.2-sbts2018-outline-color-sbts2018.png"/>
+            {{facility.service_cost}}</p>
+          <p class="card-text font-weight-bold" style="font-style: oblique">
+            {{facility.serviceType.service_type_name}}</p>
+          <a [routerLink]="['/facilities/detail', facility.service_id]"  type="button" class="btn btn-outline-dark" style="background-color: #c5dfe8; color: #15133C">Detail</a>
+          <a type="button" class="btn btn-outline-dark  ml-4" style="background-color: #DAE5D0; color: #15133C" [routerLink]="['/facilities/edit',facility.service_id]">Edit</a>
+          <a type="button" class="btn btn-outline-dark ml-4" style=" background-color: #e66557; color: #15133C"
+             data-toggle="modal" data-target="#exampleModal" (click)="getFacilityDelete(facility)">
+            Delete
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Pagination-->
+  <div class="mt-3">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination d-flex justify-content-center">
+        <!--        <li class="page-item"><a class="page-link" (click)="firstPage()"><<</a></li>-->
+        <li class="page-item"><a class="page-link" (click)="previousPage()"
+                                 style="background-color: #DAE5D0; color: #15133C">Previous</a></li>
+        <li class="page-item">
+          <div class="input-group d-flex">
+            <input type="number" min="1" [max]="totalPagination" class="form-control"
+                   placeholder="2" aria-label="Username"
+                   aria-describedby="basic-addon1" [value]="indexPagination"
+                   (change)="indexPaginationChange($event.target.value)">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">{{totalPagination}}</span>
+            </div>
+          </div>
+        </li>
+        <!--        <li class="page-item">-->
+        <!--          <button class="btn btn-primary rounded-0" (click)="findPagination()">Đi</button>-->
+        <!--        </li>-->
+        <li class="page-item"><a class="page-link" (click)="nextPage()"
+                                 style="background-color: #DAE5D0; color: #15133C">Next</a></li>
+        <!--        <li class="page-item"><a class="page-link" (click)="lastPage()">>></a></li>-->
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+
+<!-- Modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete facility</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete the facility: <span style="color: #4f3fff">{{facilityDelete.service_name}}</span>?
+      </div>
+      <div class="ml-3">
+        <small style="color: red; font-style: italic">Note: this action will not be undone once done!</small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal" style="background-color: #e66557; color: #15133C" (click)="deleteFacility(facilityDelete.service_id)">Delete</button>
+        <button type="button" class="btn" style="background-color: #c5dfe8; color: #15133C" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
